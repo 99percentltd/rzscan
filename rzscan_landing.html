@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RZ Scan</title>
+</head>
+<body>
+
+  <style>
+    html{scroll-behavior:smooth;}
+    .notice-bar{
+      width:100%;
+      padding:10px 40px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:20px;
+      font-family:var(--fm);
+      font-size:10px;
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      position:relative;
+    }
+    .notice-bar.coming-soon{
+      background:#c8a96e;
+      color:#0f0f0e;
+    }
+    .notice-bar.soft-launch{
+      background:#1a3a5c;
+      color:#c8a96e;
+    }
+    .notice-bar a{
+      color:inherit;
+      text-decoration:none;
+      border-bottom:0.5px solid currentColor;
+      padding-bottom:1px;
+    }
+    .notice-bar a:hover{
+      opacity:0.7;
+    }
+    .notice-dismiss{
+      position:absolute;
+      right:20px;
+      top:50%;
+      transform:translateY(-50%);
+      background:none;
+      border:none;
+      font-family:var(--fm);
+      font-size:13px;
+      color:inherit;
+      cursor:pointer;
+      opacity:0.5;
+      padding:4px 8px;
+      line-height:1;
+    }
+    .notice-dismiss:hover{opacity:1;}
+    @media(max-width:768px){
+      .notice-bar{padding:10px 40px 10px 16px;font-size:9px;letter-spacing:0.1em;}
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap');
+    *{box-sizing:border-box;margin:0;padding:0;}
+
+    html,
+    body{
+      margin:0;
+      padding:0;
+      background:var(--paper);
+    }
+
+    :root{
+      --ink:#0f0f0e;--ink-2:#3a3a38;--ink-3:#7a7a77;
+      --paper:#f5f4f0;--paper-2:#edecea;
+      --accent:#c8a96e;--navy:#1a3a5c;
+      --rule:rgba(15,15,14,0.1);
+      --fd:'Cormorant Garamond',serif;--fm:'DM Mono',monospace;
+      --mw:1200px;
+    }
+    .page{background:var(--paper);color:var(--ink);font-family:var(--fm);font-weight:300;font-size:13px;line-height:1.7;}
+
+/* NAV */
+.nav-wrap{position:sticky;top:0;background:var(--paper);z-index:100;border-bottom:0.5px solid var(--rule);}
+nav{max-width:var(--mw);margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:24px 40px;}
+.nav-logo{font-family:var(--fd);font-size:17px;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;}
+.nav-logo span{color:var(--accent);}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-3);text-decoration:none;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:9px 20px;border:0.5px solid var(--ink);background:transparent;font-family:var(--fm);cursor:pointer;color:var(--ink);}
+.nav-cta:hover{background:var(--ink);color:var(--paper);}
+.ham{display:none;background:none;border:none;cursor:pointer;padding:4px;}
+.ham span{display:block;width:22px;height:1px;background:var(--ink);margin:5px 0;transition:all 0.2s;}
+.mob-menu{display:none;background:var(--paper);border-top:0.5px solid var(--rule);padding:24px 40px;flex-direction:column;gap:20px;}
+.mob-menu a{font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-3);text-decoration:none;}
+.mob-menu.open{display:flex;}
+
+/* HERO */
+.hero-wrap{border-bottom:0.5px solid var(--rule);}
+.hero{max-width:var(--mw);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;min-height:520px;}
+.hero-l{padding:64px 40px;display:flex;flex-direction:column;justify-content:space-between;border-right:0.5px solid var(--rule);}
+.eyebrow{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:28px;}
+.hero-title{font-family:var(--fd);font-size:52px;font-weight:300;line-height:1.08;letter-spacing:-0.01em;margin-bottom:0;}
+.hero-title em{font-style:italic;color:var(--accent);}
+.hero-sub{font-size:12px;color:var(--ink-2);line-height:1.85;max-width:360px;padding-top:32px;border-top:0.5px solid var(--rule);margin-top:32px;}
+.hero-r{background:var(--navy);position:relative;overflow:hidden;min-height:360px;}
+
+/* STAT ROW */
+.stat-wrap{border-bottom:0.5px solid var(--rule);}
+.stat-row{max-width:var(--mw);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);}
+.stat{padding:32px 40px;border-right:0.5px solid var(--rule);}
+.stat:last-child{border-right:none;}
+.stat-num{font-family:var(--fd);font-size:40px;font-weight:300;line-height:1;margin-bottom:6px;}
+.stat-num em{font-style:normal;color:var(--accent);}
+.stat-label{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-3);}
+
+/* SECTIONS */
+.sec-wrap{border-bottom:0.5px solid var(--rule);}
+.sec{max-width:var(--mw);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;}
+.sec-l{padding:64px 40px;border-right:0.5px solid var(--rule);}
+.sec-r{padding:64px 40px;}
+.tag{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:20px;}
+.sec-title{font-family:var(--fd);font-size:36px;font-weight:300;line-height:1.12;margin-bottom:20px;}
+.sec-title em{font-style:italic;}
+.sec-body{font-family:var(--fm);font-size:12px;color:var(--ink-2);line-height:1.9;}
+.sec-body p+p{margin-top:14px;}
+
+/* PROBLEM CARDS */
+.prob-card{padding:24px 0;border-bottom:0.5px solid var(--rule);display:grid;grid-template-columns:28px 1fr;gap:18px;align-items:baseline;}
+.prob-card:last-child{border-bottom:none;}
+.prob-content{flex:1;}
+.prob-n{font-family:var(--fd);font-size:26px;font-weight:300;color:var(--accent);line-height:1;}
+.prob-n{flex-shrink:0;margin-bottom:0;}
+.prob-title{font-size:11px;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink);margin-bottom:5px;}
+.prob-body{font-size:11px;color:var(--ink-3);line-height:1.8;}
+
+/* SERVICES */
+.svc-content{flex:1;}
+.svc-header{max-width:var(--mw);margin:0 auto;padding:48px 40px 28px;border-bottom:0.5px solid var(--rule);display:flex;justify-content:space-between;align-items:flex-end;gap:24px;}
+.svc-grid-wrap{border-bottom:0.5px solid var(--rule);}
+.svc-grid{max-width:var(--mw);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);}
+.svc{padding:36px 40px;border-right:0.5px solid var(--rule);}
+.svc:last-child{border-right:none;}
+.svc-layout{display:flex;align-items:flex-start;gap:16px;}
+.svc-icon{width:28px;height:28px;flex-shrink:0;margin-bottom:0;}
+.svc-name{font-family:var(--fd);font-size:21px;font-weight:300;line-height:1.2;margin-bottom:10px;}
+.svc-name em{font-style:italic;}
+.svc-desc{font-size:11px;color:var(--ink-3);line-height:1.85;}
+.svc-tag{display:inline-block;margin-top:14px;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border-bottom:0.5px solid var(--accent);padding-bottom:2px;}
+
+
+
+/* ABSTRACT PANEL */
+.abs-wrap{border-bottom:0.5px solid var(--rule);}
+.abs{max-width:var(--mw);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;min-height:380px;}
+.abs-l{background:var(--navy);position:relative;overflow:hidden;}
+.abs-r{padding:64px 40px;display:flex;flex-direction:column;justify-content:center;}
+.abs-r .sec-body{max-width:100%;}
+
+/* PROCESS */
+.proc-content{flex:1;}
+.proc-header{max-width:var(--mw);margin:0 auto;padding:48px 40px 28px;border-bottom:0.5px solid var(--rule);}
+.proc-grid{max-width:var(--mw);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);}
+.proc-layout{display:flex;align-items:flex-start;gap:16px;}
+.proc-step{padding:32px 40px;border-right:0.5px solid var(--rule);position:relative;}
+.proc-step:last-child{border-right:none;}
+.step-n{font-family:var(--fd);font-size:48px;font-weight:300;color:var(--paper-2);line-height:1;margin-bottom:10px;-webkit-text-stroke:0.5px var(--rule);flex-shrink:0;}
+.step-title{font-family:var(--fm);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);margin-bottom:7px;}
+.step-desc{font-family:var(--fm);font-size:11px;color:var(--ink-3);line-height:1.8;}
+.step-arr{position:absolute;right:-9px;top:40px;color:var(--accent);font-size:14px;z-index:2;}
+
+/* ABOUT */
+.about-wrap{border-bottom:0.5px solid var(--rule);}
+.about{max-width:var(--mw);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;}
+.about-l{padding:64px 40px;border-right:0.5px solid var(--rule);}
+.about-r{padding:64px 40px;}
+.cred-list{list-style:none;margin-top:28px;}
+.cred-list li{padding:12px 0;border-bottom:0.5px solid var(--rule);font-size:11px;color:var(--ink-2);display:flex;align-items:center;gap:10px;}
+.cred-list li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+
+/* CTA */
+.cta-wrap{border-bottom:0.5px solid var(--rule);}
+.cta{max-width:var(--mw);margin:0 auto;padding:88px 40px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:28px;}
+.cta-title{font-family:var(--fd);font-size:48px;font-weight:300;line-height:1.1;max-width:520px;}
+.cta-title em{font-style:italic;color:var(--accent);}
+.cta-sub{font-family:var(--fm);font-size:12px;color:var(--ink-3);max-width:380px;line-height:1.8;}
+.cta-form{display:flex;width:100%;max-width:460px;border:0.5px solid var(--ink);}
+.cta-input{flex:1;padding:13px 18px;background:transparent;border:none;font-family:var(--fm);font-size:12px;color:var(--ink);outline:none;min-width:0;}
+.cta-input::placeholder{color:var(--ink-3);}
+.cta-btn{padding:13px 24px;background:var(--ink);color:var(--paper);border:none;font-family:var(--fm);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;white-space:nowrap;}
+.cta-btn:hover{background:var(--navy);}
+.cta-note{font-family:var(--fm);font-size:10px;color:var(--ink-3);letter-spacing:0.06em;}
+
+/* FOOTER */
+footer{max-width:var(--mw);margin:0 auto;padding:28px 40px;display:flex;justify-content:space-between;align-items:center;}
+.foot-logo{font-family:var(--fd);font-size:13px;letter-spacing:0.08em;text-transform:uppercase;}
+.foot-note{font-family:var(--fm);font-size:10px;color:var(--ink-3);}
+
+.enquiry-wrap{
+  display:none;
+  width:100%;
+  max-width:560px;
+  overflow:hidden;
+  margin-top:0;
+}
+.enquiry-wrap.open{
+  display:block;
+  margin-top:32px;
+  padding-top:32px;
+  border-top:0.5px solid var(--rule);
+}
+.enquiry-form{
+  width:100%;
+}
+.ef-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0 32px;
+  margin-bottom:18px;
+  align-items:center;
+}
+.ef-row-top{
+  align-items:start;
+}
+.ef-row-btn{
+  margin-top:8px;
+}
+.ef-row label{
+  font-size:10px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  text-align:right;
+}
+.ef-row input,
+.ef-row textarea{
+  background:transparent;
+  border:none;
+  border-bottom:0.5px solid var(--ink);
+  font-family:var(--fm);
+  font-size:12px;
+  color:var(--ink);
+  padding:8px 0;
+  outline:none;
+  width:100%;
+  resize:none;
+}
+.ef-row input::placeholder,
+.ef-row textarea::placeholder{
+  color:var(--ink-3);
+}
+.ef-row input:focus,
+.ef-row textarea:focus,
+.ef-select-wrap:focus-within select{
+  border-bottom-color:var(--accent);
+}
+.ef-select-wrap{
+  position:relative;
+  width:100%;
+}
+.ef-select-wrap select{
+  width:100%;
+  background:transparent;
+  border:none;
+  border-bottom:0.5px solid var(--ink);
+  border-radius:0;
+  font-family:var(--fm);
+  font-size:12px;
+  color:var(--ink);
+  padding:8px 24px 8px 0;
+  outline:none;
+  appearance:none;
+  -webkit-appearance:none;
+  cursor:pointer;
+}
+.ef-select-wrap select option{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--fm);
+  font-size:12px;
+}
+.ef-arrow{
+  position:absolute;
+  right:0;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:13px;
+  color:var(--ink-3);
+  pointer-events:none;
+  line-height:1;
+}
+.ef-submit{
+  width:100%;
+}
+.ef-status{
+  font-size:11px;
+  color:var(--ink-3);
+  min-height:16px;
+  padding-top:4px;
+}
+.logo-rz {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+.logo-scan {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: lowercase;
+  padding-left: 6px;
+  vertical-align: middle;
+}
+
+.reveal-body{overflow:hidden;max-height:0;transition:max-height 0.4s ease;font-family:var(--fm)}
+.reveal-body.open{max-height:600px;}
+.reveal-toggle{background:none;border:none;font-family:var(--fm);font-size:10px;letter-spacing:0.12em;color:var(--ink-3);cursor:pointer;padding:10px 0 0;display:inline-block;text-transform:uppercase;}
+.reveal-toggle:hover{color:var(--accent);}
+
+@media(max-width:600px){
+  .ef-row{
+    grid-template-columns:1fr;
+    gap:6px;
+    margin-bottom:20px;
+  }
+  .ef-row label{
+    text-align:left;
+  }
+  .ef-row-btn{
+    grid-template-columns:1fr;
+  }
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  nav{padding:20px 24px;}
+  .nav-links,.nav-cta{display:none;}
+  .ham{display:block;}
+  .mob-menu{padding:20px 24px;}
+
+  .hero{grid-template-columns:1fr;}
+  .hero-l{padding:48px 24px;border-right:none;border-bottom:0.5px solid var(--rule);}
+  .hero-title{font-size:38px;}
+  .hero-r{min-height:240px;}
+
+  .stat-row{grid-template-columns:1fr 1fr;}
+  .stat{padding:24px;}
+  .stat:nth-child(2){border-right:none;}
+  .stat:nth-child(3){border-top:0.5px solid var(--rule);grid-column:1/-1;border-right:none;}
+
+  .sec{grid-template-columns:1fr;}
+  .sec-l{padding:48px 24px;border-right:none;border-bottom:0.5px solid var(--rule);}
+  .sec-r{padding:48px 24px;}
+  .sec-title{font-size:28px;}
+
+  .svc-header{flex-direction:column;align-items:flex-start;padding:36px 24px 24px;}
+  .svc-grid{grid-template-columns:1fr;}
+  .svc{border-right:none;border-bottom:0.5px solid var(--rule);padding:32px 24px;}
+  .svc:last-child{border-bottom:none;}
+
+  .abs{grid-template-columns:1fr;}
+  .abs-l{min-height:240px;}
+  .abs-r{padding:48px 24px;}
+
+  .proc-grid{grid-template-columns:1fr 1fr;}
+  .proc-header{padding:36px 24px 24px;}
+  .proc-step{padding:28px 24px;border-right:none;border-bottom:0.5px solid var(--rule);}
+  .proc-step:nth-child(odd){border-right:0.5px solid var(--rule);}
+  .proc-step:last-child{border-bottom:none;}
+  .step-arr{display:none;}
+
+  .about{grid-template-columns:1fr;}
+  .about-l{padding:48px 24px;border-right:none;border-bottom:0.5px solid var(--rule);}
+  .about-r{padding:48px 24px;}
+
+  .cta{padding:64px 24px;}
+  .cta-title{font-size:34px;}
+  .cta-form{flex-direction:column;border:none;gap:12px;}
+  .cta-input{border:0.5px solid var(--ink);padding:13px 18px;width:100%;}
+  .cta-btn{width:100%;text-align:center;padding:14px;}
+
+  footer{flex-direction:column;gap:8px;padding:24px;text-align:center;}
+}
+@media(max-width:480px){
+  .hero-title{font-size:32px;}
+  .stat-row{grid-template-columns:1fr;}
+  .stat{border-right:none!important;border-top:0.5px solid var(--rule);}
+  .stat:first-child{border-top:none;}
+  .stat{grid-column:auto!important;}
+  .proc-grid{grid-template-columns:1fr;}
+  .proc-step{border-right:none!important;}
+}
+
+.elev-divider{width:100%;height:160px;position:relative;overflow:hidden;border-top:0.5px solid var(--rule);border-bottom:0.5px solid var(--rule);}
+</style>
+
+<div class="page">
+  <div class="notice-bar coming-soon" id="notice-bar">
+    <span>RZ Scan is launching mid&#8209;2026 &mdash; register your interest <a href="#quote">early.</a></span>
+    <button class="notice-dismiss" id="notice-dismiss" aria-label="Dismiss">&#215;</button>
+  </div>
+  <div class="nav-wrap">
+    <nav>
+      <div class="nav-logo">
+        <span class="logo-rz">RZ</span><span class="logo-scan">scan</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#service">The service</a></li>
+        <li><a href="#process">How it works</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+      <button class="nav-cta" onclick="document.getElementById('quote').scrollIntoView({behavior:'smooth'})">Get a quote</button>    <button class="ham" id="ham" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div class="mob-menu" id="mob-menu">
+      <a href="#service">The service</a>
+      <a href="#process">How it works</a>
+      <a href="#about">About</a>
+      <a href="#quote">Get a quote</a>
+    </div>
+  </div>
+
+  <div class="hero-wrap">
+    <div class="hero">
+      <div class="hero-l">
+        <p class="eyebrow">3D Laser Scanning &mdash; Canberra ACT</p>
+        <h1 class="hero-title">
+          The existing building,<br><em>captured completely.</em>
+        </h1>
+        <p class="hero-sub">
+          BIM-ready point cloud data for alterations and additions projects across the ACT. Accurate to &plusmn;6mm. Delivered in formats that load directly into Revit and AutoCAD &mdash; no guesswork, no return visits, no reconciliation.
+        </p>
+      </div>
+      <div class="hero-r">
+        <svg viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0;" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="520" fill="#1a3a5c"/>
+          <g opacity="0.1" stroke="#c8a96e" stroke-width="0.5">
+            <line x1="0" y1="80" x2="400" y2="80"/><line x1="0" y1="160" x2="400" y2="160"/>
+            <line x1="0" y1="240" x2="400" y2="240"/><line x1="0" y1="320" x2="400" y2="320"/>
+            <line x1="0" y1="400" x2="400" y2="400"/><line x1="0" y1="480" x2="400" y2="480"/>
+            <line x1="80" y1="0" x2="80" y2="520"/><line x1="160" y1="0" x2="160" y2="520"/>
+            <line x1="240" y1="0" x2="240" y2="520"/><line x1="320" y1="0" x2="320" y2="520"/>
+          </g>
+          <g opacity="0.55" stroke="#c8a96e" fill="none">
+            <rect x="60" y="110" width="280" height="190" stroke-width="0.75"/>
+            <line x1="60" y1="205" x2="195" y2="205" stroke-width="0.5"/>
+            <line x1="195" y1="110" x2="195" y2="300" stroke-width="0.5"/>
+            <line x1="195" y1="250" x2="340" y2="250" stroke-width="0.5"/>
+            <line x1="98" y1="110" x2="126" y2="110" stroke="#f5f4f0" stroke-width="1.5"/>
+            <line x1="248" y1="110" x2="296" y2="110" stroke="#f5f4f0" stroke-width="1.5"/>
+            <line x1="60" y1="158" x2="60" y2="185" stroke="#f5f4f0" stroke-width="1.5"/>
+            <line x1="340" y1="158" x2="340" y2="185" stroke="#f5f4f0" stroke-width="1.5"/>
+            <path d="M195 205 Q232 205 232 245" stroke-width="0.5" stroke-dasharray="2,2"/>
+          </g>
+          <g fill="#c8a96e">
+            <circle cx="62" cy="112" r="1.5" opacity="0.9"/><circle cx="340" cy="112" r="1.5" opacity="0.9"/>
+            <circle cx="62" cy="300" r="1.5" opacity="0.9"/><circle cx="340" cy="300" r="1.5" opacity="0.9"/>
+            <circle cx="195" cy="112" r="1.5" opacity="0.9"/><circle cx="195" cy="300" r="1.5" opacity="0.9"/>
+            <circle cx="195" cy="205" r="1.5" opacity="0.9"/>
+            <circle cx="88" cy="145" r="1" opacity="0.5"/><circle cx="108" cy="138" r="1" opacity="0.4"/>
+            <circle cx="128" cy="152" r="1" opacity="0.6"/><circle cx="148" cy="136" r="1" opacity="0.3"/>
+            <circle cx="165" cy="148" r="1" opacity="0.5"/><circle cx="78" cy="162" r="1" opacity="0.4"/>
+            <circle cx="98" cy="170" r="1" opacity="0.6"/><circle cx="118" cy="164" r="1" opacity="0.3"/>
+            <circle cx="138" cy="178" r="1" opacity="0.5"/><circle cx="158" cy="168" r="1" opacity="0.4"/>
+            <circle cx="218" cy="138" r="1" opacity="0.5"/><circle cx="242" cy="145" r="1" opacity="0.4"/>
+            <circle cx="265" cy="134" r="1" opacity="0.6"/><circle cx="288" cy="142" r="1" opacity="0.3"/>
+            <circle cx="310" cy="150" r="1" opacity="0.5"/><circle cx="225" cy="165" r="1" opacity="0.4"/>
+            <circle cx="250" cy="158" r="1" opacity="0.6"/><circle cx="272" cy="168" r="1" opacity="0.3"/>
+            <circle cx="292" cy="158" r="1" opacity="0.5"/><circle cx="312" cy="165" r="1" opacity="0.4"/>
+            <circle cx="78" cy="230" r="1" opacity="0.5"/><circle cx="102" cy="238" r="1" opacity="0.4"/>
+            <circle cx="125" cy="225" r="1" opacity="0.6"/><circle cx="145" cy="242" r="1" opacity="0.3"/>
+            <circle cx="165" cy="233" r="1" opacity="0.5"/>
+            <circle cx="218" cy="265" r="1" opacity="0.5"/><circle cx="245" cy="275" r="1" opacity="0.4"/>
+            <circle cx="268" cy="260" r="1" opacity="0.6"/><circle cx="292" cy="268" r="1" opacity="0.3"/>
+            <circle cx="315" cy="275" r="1" opacity="0.5"/>
+          </g>
+          <g opacity="0.45">
+            <line x1="30" y1="400" x2="54" y2="400" stroke="#c8a96e" stroke-width="0.75"/>
+            <line x1="30" y1="400" x2="30" y2="376" stroke="#c8a96e" stroke-width="0.75"/>
+            <line x1="30" y1="400" x2="18" y2="388" stroke="#c8a96e" stroke-width="0.75"/>
+            <text x="58" y="404" font-family="DM Mono,monospace" font-size="8" fill="#c8a96e" letter-spacing="0.1em">X</text>
+            <text x="26" y="372" font-family="DM Mono,monospace" font-size="8" fill="#c8a96e" letter-spacing="0.1em">Z</text>
+            <text x="10" y="390" font-family="DM Mono,monospace" font-size="8" fill="#c8a96e" letter-spacing="0.1em">Y</text>
+          </g>
+          <g opacity="0.65">
+            <text x="200" y="440" font-family="DM Mono,monospace" font-size="9" fill="#c8a96e" text-anchor="middle" letter-spacing="0.15em">ACCURACY &plusmn;6MM</text>
+            <line x1="112" y1="436" x2="138" y2="436" stroke="#c8a96e" stroke-width="0.5"/>
+            <line x1="262" y1="436" x2="288" y2="436" stroke="#c8a96e" stroke-width="0.5"/>
+          </g>
+          <g opacity="0.35">
+            <line x1="60" y1="472" x2="340" y2="472" stroke="#c8a96e" stroke-width="0.5"/>
+            <line x1="60" y1="468" x2="60" y2="476" stroke="#c8a96e" stroke-width="0.5"/>
+            <line x1="340" y1="468" x2="340" y2="476" stroke="#c8a96e" stroke-width="0.5"/>
+            <text x="200" y="488" font-family="DM Mono,monospace" font-size="8" fill="#c8a96e" text-anchor="middle" letter-spacing="0.1em">10M</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="stat-wrap">
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-num"><em>&plusmn;6</em>mm</div>
+        <div class="stat-label">Scanning accuracy</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><em>1</em> scan</div>
+        <div class="stat-label">All we need on site</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><em>0</em></div>
+        <div class="stat-label">Return visits required</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-wrap">
+    <div class="sec">
+      <div class="sec-l">
+        <span class="tag">The problem</span>
+        <h2 class="sec-title">Manual measure-ups<br>are <em>pulling your<br>team off the work<br>that matters.</em></h2>
+        <p class="sec-body">Two people. Two to three hours on site. Then more time at the desk resolving dimensions that don&rsquo;t quite agree &mdash; before a single design decision has been made.</p>
+      </div>
+      <div class="sec-r">
+        <div class="prob-card">
+
+          <div class="prob-n">01</div>
+          <div class="prob-content">
+            <div class="prob-title">A resourcing problem  <button class="reveal-toggle" data-group="the-problem" data-target="prob-1" data-more="[+]" data-less="[&mdash;]">[+]</button></div>
+            <div class="prob-body reveal-body" id="prob-1" data-group="the-problem">Every hour a graduate or senior designer spends measuring a house is an hour not spent on design, documentation, or a billable client deliverable. A manual measure-up on a typical A&amp;A house ties up two people for half a day &mdash; before design has begun.</div>
+          </div>
+          
+        </div>
+        <div class="prob-card">
+
+          <div class="prob-n">02</div>
+          <div class="prob-content">
+            <div class="prob-title">The reconciliation problem  <button class="reveal-toggle" data-group="the-problem" data-target="prob-2" data-more="[+]" data-less="[&mdash;]">[+]</button></div>
+            <div class="prob-body reveal-body" id="prob-2" data-group="the-problem">Manual dimensions never perfectly add up. Someone experienced makes an educated guess. If that guess is wrong, the error propagates silently through the design until a builder finds it on site &mdash; where it becomes expensive.</div>
+          </div>
+          
+        </div>
+        <div class="prob-card">
+
+          <div class="prob-n">03</div>
+          <div class="prob-content">
+            <div class="prob-title">The return visit  <button class="reveal-toggle" data-group="the-problem" data-target="prob-3" data-more="[+]" data-less="[&mdash;]">[+]</button></div>
+            <div class="prob-body reveal-body" id="prob-3" data-group="the-problem">A missed ceiling height. A forgotten junction detail. A stair geometry that wasn&rsquo;t quite right. Return visits are common, disruptive to the project programme, and require scheduling around the homeowner all over again.</div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="svc-grid-wrap" id="service">
+  <div class="svc-header">
+    <div>
+      <span class="tag">What we deliver</span>
+      <h2 class="sec-title" style="margin-bottom:0;">The complete<br>existing conditions <em>record.</em></h2>
+    </div>
+    <p style="font-family:DM Mono, monospace;font-size:11px;color:var(--ink-3);max-width:220px;text-align:right;line-height:1.8;flex-shrink:0;">Fast, clean, and BIM-ready.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc">
+
+
+      <div class="svc-layout">
+        <svg class="svc-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="8" width="24" height="18" stroke="#c8a96e" stroke-width="0.75"/>
+          <line x1="4" y1="16" x2="28" y2="16" stroke="#c8a96e" stroke-width="0.5"/>
+          <line x1="14" y1="8" x2="14" y2="26" stroke="#c8a96e" stroke-width="0.5"/>
+          <circle cx="4" cy="8" r="1.5" fill="#c8a96e"/><circle cx="28" cy="8" r="1.5" fill="#c8a96e"/>
+          <circle cx="4" cy="26" r="1.5" fill="#c8a96e"/><circle cx="28" cy="26" r="1.5" fill="#c8a96e"/>
+        </svg>
+        <div class="svc-content">
+          <div class="svc-name">Residential<br><em>A&amp;A Scan </em><button class="reveal-toggle" data-group="the-service" data-target="svc-1" data-more="[+]" data-less="[&mdash;]">[+]</button></div>
+          <div class="svc-desc reveal-body" id="svc-1" data-group="the-service">Full interior and exterior capture of single dwellings. Ideal for extension, renovation, and heritage adaptation projects. Single storey through to complex two-storey homes.<br><span class="svc-tag">.RCP + .E57</span>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="svc">
+      <div class="svc-layout">
+        <svg class="svc-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="6" width="16" height="20" stroke="#c8a96e" stroke-width="0.75"/>
+          <rect x="20" y="12" width="8" height="14" stroke="#c8a96e" stroke-width="0.75"/>
+          <line x1="4" y1="14" x2="20" y2="14" stroke="#c8a96e" stroke-width="0.5"/>
+          <line x1="12" y1="6" x2="12" y2="26" stroke="#c8a96e" stroke-width="0.5"/>
+          <circle cx="4" cy="6" r="1.5" fill="#c8a96e"/><circle cx="20" cy="6" r="1.5" fill="#c8a96e"/>
+        </svg>
+        <div class="svc-content">
+          <div class="svc-name">Commercial<br><em>Fitout Scan </em><button class="reveal-toggle" data-group="the-service" data-target="svc-2" data-more="[+]" data-less="[&mdash;]">[+]</button></div>
+          <div class="svc-desc reveal-body" id="svc-2" data-group="the-service">Tenancy and floor-plate capture for commercial refurbishment and fitout projects. Delivered in formats compatible with Revit and AutoCAD workflows.<br><span class="svc-tag">.RCP + .E57</span>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="svc">
+      <div class="svc-layout">
+        <svg class="svc-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 26 L16 6 L28 26 Z" stroke="#c8a96e" stroke-width="0.75" fill="none"/>
+          <line x1="4" y1="20" x2="28" y2="20" stroke="#c8a96e" stroke-width="0.5"/>
+          <line x1="10" y1="26" x2="16" y2="6" stroke="#c8a96e" stroke-width="0.5" stroke-dasharray="2,2"/>
+          <circle cx="16" cy="6" r="1.5" fill="#c8a96e"/>
+          <circle cx="4" cy="26" r="1.5" fill="#c8a96e"/><circle cx="28" cy="26" r="1.5" fill="#c8a96e"/>
+        </svg>
+        <div class="svc-content">
+          <div class="svc-name">Heritage<br><em>Documentation </em><button class="reveal-toggle" data-group="the-service" data-target="svc-3" data-more="[+]" data-less="[&mdash;]">[+]</button></div>
+          <div class="svc-desc reveal-body" id="svc-3" data-group="the-service">Detailed facade and interior capture of heritage-listed and character buildings. Non-invasive, high-accuracy scanning of surfaces no tape measure can safely reach.<br><span class="svc-tag">.RCP + .E57 + HxDR</span>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+<div class="abs-wrap">
+  <div class="abs">
+    <div class="abs-l">
+      <svg viewBox="0 0 400 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0;" preserveAspectRatio="xMidYMid slice">
+        <rect width="400" height="380" fill="#1a3a5c"/>
+        <g opacity="0.1" stroke="#c8a96e" stroke-width="0.5">
+          <line x1="-50" y1="90" x2="450" y2="390"/><line x1="-50" y1="50" x2="450" y2="350"/>
+          <line x1="-50" y1="10" x2="450" y2="310"/><line x1="-50" y1="-30" x2="450" y2="270"/>
+          <line x1="-50" y1="-70" x2="450" y2="230"/><line x1="-50" y1="130" x2="350" y2="390"/>
+          <line x1="450" y1="90" x2="-50" y2="390"/><line x1="450" y1="50" x2="-50" y2="350"/>
+          <line x1="450" y1="10" x2="-50" y2="310"/><line x1="450" y1="-30" x2="-50" y2="270"/>
+          <line x1="450" y1="130" x2="150" y2="390"/>
+        </g>
+        <g opacity="0.65" stroke="#c8a96e" fill="none">
+          <polygon points="200,72 316,140 200,208 84,140" stroke-width="0.75"/>
+          <polygon points="84,140 84,272 200,340 200,208" stroke-width="0.75"/>
+          <polygon points="200,208 200,340 316,272 316,140" stroke-width="0.75"/>
+          <line x1="200" y1="72" x2="200" y2="208" stroke-width="0.4" opacity="0.4"/>
+          <line x1="84" y1="140" x2="316" y2="140" stroke-width="0.4" opacity="0.4"/>
+        </g>
+        <g fill="#c8a96e">
+          <circle cx="138" cy="155" r="1.2" opacity="0.7"/><circle cx="158" cy="165" r="1.2" opacity="0.5"/>
+          <circle cx="118" cy="170" r="1.2" opacity="0.8"/><circle cx="143" cy="188" r="1.2" opacity="0.6"/>
+          <circle cx="162" cy="195" r="1.2" opacity="0.4"/><circle cx="123" cy="205" r="1.2" opacity="0.7"/>
+          <circle cx="146" cy="218" r="1.2" opacity="0.5"/><circle cx="103" cy="215" r="1.2" opacity="0.6"/>
+          <circle cx="238" cy="155" r="1.2" opacity="0.6"/><circle cx="262" cy="170" r="1.2" opacity="0.4"/>
+          <circle cx="243" cy="185" r="1.2" opacity="0.8"/><circle cx="265" cy="200" r="1.2" opacity="0.5"/>
+          <circle cx="245" cy="218" r="1.2" opacity="0.7"/><circle cx="268" cy="235" r="1.2" opacity="0.4"/>
+          <circle cx="248" cy="250" r="1.2" opacity="0.6"/>
+          <circle cx="168" cy="108" r="1.2" opacity="0.7"/><circle cx="193" cy="98" r="1.2" opacity="0.5"/>
+          <circle cx="218" cy="108" r="1.2" opacity="0.8"/><circle cx="243" cy="120" r="1.2" opacity="0.4"/>
+          <circle cx="150" cy="118" r="1.2" opacity="0.6"/>
+        </g>
+        <g opacity="0.55">
+          <circle cx="200" cy="316" r="4" fill="none" stroke="#f5f4f0" stroke-width="0.75"/>
+          <circle cx="200" cy="316" r="1.5" fill="#f5f4f0"/>
+          <line x1="200" y1="308" x2="200" y2="300" stroke="#f5f4f0" stroke-width="0.5"/>
+          <line x1="192" y1="316" x2="184" y2="316" stroke="#f5f4f0" stroke-width="0.5"/>
+          <line x1="208" y1="316" x2="216" y2="316" stroke="#f5f4f0" stroke-width="0.5"/>
+          <text x="200" y="334" font-family="DM Mono,monospace" font-size="7" fill="#f5f4f0" text-anchor="middle" letter-spacing="0.1em" opacity="0.6">SCANNER POSITION</text>
+        </g>
+      </svg>
+    </div>
+    <div class="abs-r">
+      <span class="tag">The technology</span>
+      <h2 class="sec-title">Leica BLK360 &mdash;<br><em>precision</em><br>in a single visit. <button class="reveal-toggle" data-group="the-tech" data-target="tech-1" data-more="[+]" data-less="[&mdash;]">[+]</button></h2>
+      <div class="sec-body svc-desc reveal-body" id="tech-1" data-group="the-tech">
+        <p>The Leica BLK360 is the industry standard for architectural as-built scanning. It captures a complete spherical scan at &plusmn;6mm accuracy &mdash; every room, wall, ceiling, floor junction, and external facade &mdash; in a single site visit.</p>
+        <p>Delivered as .RCP and .E57 point cloud files, with an HxDR online viewer link your whole team can access in a browser. Load straight into Revit or AutoCAD and begin.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec-wrap" id="process" style="border-bottom:0.5px solid var(--rule);">
+  <div class="proc-header">
+    <span class="tag">How it works</span>
+    <h2 class="sec-title" style="margin-bottom:0;">From enquiry to<br><em>delivery</em>, in four steps.</h2>
+  </div>
+
+
+  <div class="proc-grid">
+
+    <div class="proc-step">
+      <div class="proc-layout">
+        <div class="step-n">01</div>
+        <div class="proc-content">
+          <div class="step-title">Submit a brief  
+            <button class="reveal-toggle" data-group="the-works" data-target="step-1" data-more="[+]" data-less="[&mdash;]">[+]</button>
+          </div>
+          <div class="step-desc svc-desc reveal-body" id="step-1" data-group="the-works">Send us the project address, building type, and approximate floor area. We&rsquo;ll confirm a fixed price within 24 hours.</div>
+        </div>
+      </div>
+
+
+      <div class="step-arr">&rarr;</div>
+    </div>
+
+    <div class="proc-step">
+      <div class="proc-layout">
+        <div class="step-n">02</div>
+        <div class="proc-content">
+          <div class="step-title">Confirm &amp; book 
+            <button class="reveal-toggle" data-group="the-works" data-target="step-2" data-more="[+]" data-less="[&mdash;]">[+]</button>
+          </div>
+          <div class="step-desc svc-desc reveal-body" id="step-2" data-group="the-works">Sign the service agreement, and we&rsquo;ll lock in a date with you and the homeowner or site contact.</div>
+          <div class="step-arr">&rarr;</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proc-step">
+      <div class="proc-layout">
+        <div class="step-n">03</div>
+        <div class="proc-content">
+          <div class="step-title">We scan on site 
+            <button class="reveal-toggle" data-group="the-works" data-target="step-3" data-more="[+]" data-less="[&mdash;]">[+]</button>
+          </div>
+          <div class="step-desc svc-desc reveal-body" id="step-3" data-group="the-works">A single site visit. Every interior space and exterior facade captured with the Leica BLK360. No disruption, no damage, no return visits.</div>
+        </div>
+      </div>
+      <div class="step-arr">&rarr;</div>
+    </div>
+
+    <div class="proc-step">
+      <div class="proc-layout">
+        <div class="step-n">04</div>
+        <div class="proc-content">
+          <div class="step-title">Receive your files 
+            <button class="reveal-toggle" data-group="the-works" data-target="step-4" data-more="[+]" data-less="[&mdash;]">[+]</button>
+          </div>
+          <div class="step-desc svc-desc reveal-body" id="step-4" data-group="the-works">Your registered .RCP and .E57 point cloud files plus an HxDR viewer link, delivered as soon as they&rsquo;re ready. Load straight into Revit and begin.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+</div>
+
+<div class="about-wrap" id="about">
+  <div class="about">
+    <div class="about-l">
+      <span class="tag">About</span>
+      <h2 class="sec-title">Operated by<br>an <em>Architectural<br>Technologist. 
+        <button class="reveal-toggle" data-group="about-why" data-target="about-1" data-more="[+]" data-less="[&mdash;]">[+]</button></em>
+      </h2>
+      <div class="sec-body reveal-body" id="about-1" data-group="about-why" style="margin-bottom:0;">
+        <p>RZ Scan is not a generic scanning operator. The business is founded and run by an Architectural Technologist with extensive building design experience &mdash; someone who understands what a point cloud needs to show, how architects use it, and where the critical details are in a renovation.</p>
+        <ul class="cred-list">
+          <li>Architectural Technologist with extensive building design experience</li>
+          <li>Familiar with Revit and AutoCAD documentation workflows</li>
+          <li>Understands A&amp;A project constraints, DA requirements, and construction tolerances</li>
+          <li>Canberra-based &mdash; local knowledge, fast response, no mobilisation delays</li>
+        </ul>
+      </div>
+    </div>
+    <div class="about-r">
+      <span class="tag">Why it matters</span>
+      <h2 class="sec-title">The scanner<br>is only half<br>the <em>picture. 
+        <button class="reveal-toggle" data-group="about-why" data-target="about-2" data-more="[+]" data-less="[&mdash;]">[+]</button></em>
+      </h2>
+      <div class="sec-body reveal-body" id="about-2" data-group="about-why">
+        <p>A point cloud is only as useful as the person who captures it. An operator who doesn&rsquo;t understand buildings will miss the wall junction that matters, skip the ceiling step that changes everything, or fail to scan the roofline detail the heritage planner will ask about.</p>
+        <p>When RZ Scan attends your site, the person holding the scanner knows what your drawings need to show. Coverage decisions are made with your design process in mind &mdash; not just the equipment&rsquo;s capabilities.</p>
+        <p>That&rsquo;s the difference between data and useful data.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-wrap" id="quote">
+  <div class="cta">
+    <h2 class="cta-title">Ready to start with<br><em>accurate</em> existing conditions?</h2>
+    <p class="cta-sub">Send us your project details and we&rsquo;ll respond with a fixed price within 24 hours. No obligations, no site visit required to quote.</p>
+
+    <button class="cta-btn" id="quote-toggle" aria-expanded="false">
+      Request a quote &rarr;
+    </button>
+
+    <div class="enquiry-wrap" id="enquiry-wrap">
+      <form class="enquiry-form" action="https://formspree.io/f/xqenygzn" method="POST">
+
+        <div class="ef-row">
+          <label for="ef-name">Name</label>
+          <input type="text" id="ef-name" name="name" placeholder="Your name" required>
+        </div>
+        <div class="ef-row">
+          <label for="ef-firm">Firm</label>
+          <input type="text" id="ef-firm" name="firm" placeholder="Practice or company name" required>
+        </div>
+        <div class="ef-row">
+          <label for="ef-email">Email</label>
+          <input type="email" id="ef-email" name="email" placeholder="your@email.com.au" required>
+        </div>
+        <div class="ef-row">
+          <label for="ef-phone">Phone</label>
+          <input type="tel" id="ef-phone" name="phone" placeholder="04XX XXX XXX">
+        </div>
+        <div class="ef-row">
+          <label for="ef-address">Project address</label>
+          <input type="text" id="ef-address" name="address" placeholder="Street, Suburb ACT" required>
+        </div>
+        <div class="ef-row">
+          <label for="ef-type">Building type</label>
+          <div class="ef-select-wrap">
+            <select id="ef-type" name="building_type">
+              <option value="" disabled selected>Select&hellip;</option>
+              <option>Single-storey residential</option>
+              <option>Two-storey residential</option>
+              <option>Heritage / character home</option>
+              <option>Commercial tenancy</option>
+              <option>Other</option>
+            </select>
+            <span class="ef-arrow">&#8597;</span>
+          </div>
+        </div>
+        <div class="ef-row ef-row-top">
+          <label for="ef-msg">Additional notes</label>
+          <textarea id="ef-msg" name="message" rows="4" placeholder="Approximate floor area, access notes, preferred timing&hellip;"></textarea>
+        </div>
+
+        <div class="ef-row ef-row-btn">
+          <span></span>
+          <button type="submit" class="cta-btn ef-submit">Send enquiry &rarr;</button>
+        </div>
+
+        <div class="ef-row">
+          <span></span>
+          <p class="ef-status" id="ef-status"></p>
+        </div>
+
+      </form>
+    </div>
+
+    <p class="cta-note">Serving Canberra ACT and Queanbeyan region &nbsp;&middot;&nbsp; Weekend availability &nbsp;&middot;&nbsp; Enquire for turnaround times</p>
+  </div>
+</div>
+
+<footer>
+  <div class="nav-logo">
+   <span class="logo-rz">RZ</span><span class="logo-scan">scan</span>
+ </div>
+ <div class="foot-note">Canberra ACT &nbsp;&middot;&nbsp; hello@rzscan.com.au &nbsp;&middot;&nbsp; ABN 34 348 216 175</div>
+</footer>
+</div>
+
+<script>
+  const ham=document.getElementById('ham'),menu=document.getElementById('mob-menu');
+  ham.addEventListener('click',()=>menu.classList.toggle('open'));
+
+  const toggleBtn=document.getElementById('quote-toggle');
+  const enquiryWrap=document.getElementById('enquiry-wrap');
+  toggleBtn.addEventListener('click',function(){
+    const isOpen=enquiryWrap.classList.contains('open');
+    if(isOpen){
+      enquiryWrap.classList.remove('open');
+      toggleBtn.setAttribute('aria-expanded','false');
+      toggleBtn.textContent='Request a quote \u2192';
+    } else {
+      enquiryWrap.classList.add('open');
+      toggleBtn.setAttribute('aria-expanded','true');
+      toggleBtn.textContent='Close \u00d7';
+      setTimeout(()=>enquiryWrap.scrollIntoView({behavior:'smooth',block:'start'}),50);
+    }
+  });
+
+  const noticeBar=document.getElementById('notice-bar');
+  const noticeDismiss=document.getElementById('notice-dismiss');
+  if(sessionStorage.getItem('notice-dismissed')){
+    noticeBar.style.display='none';
+  }
+  noticeDismiss.addEventListener('click',function(){
+    noticeBar.style.display='none';
+    sessionStorage.setItem('notice-dismissed','true');
+  });
+
+  document.querySelectorAll('.reveal-toggle').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      const group = btn.dataset.group;
+      const bodies = document.querySelectorAll(
+        '.reveal-body[data-group="' + group + '"]'
+        );
+      const buttons = document.querySelectorAll(
+        '.reveal-toggle[data-group="' + group + '"]'
+        );
+      const isOpen = bodies[0].classList.contains('open');
+      bodies.forEach(function(body){
+        body.classList.toggle('open', !isOpen);
+      });
+      buttons.forEach(function(button){
+        button.textContent = isOpen
+        ? button.dataset.more
+        : button.dataset.less;
+      });
+    });
+  });
+
+  const form=document.querySelector('.enquiry-form');
+  const status=document.getElementById('ef-status');
+  form.addEventListener('submit',async function(e){
+    e.preventDefault();
+    const btn=form.querySelector('.ef-submit');
+    btn.textContent='Sending\u2026';
+    btn.disabled=true;
+    try{
+      const res=await fetch(form.action,{
+        method:'POST',
+        body:new FormData(form),
+        headers:{Accept:'application/json'}
+      });
+      if(res.ok){
+        status.textContent='Thank you \u2014 we\u2019ll be in touch within 24 hours.';
+        status.style.color='var(--accent)';
+        form.reset();
+        btn.textContent='Sent \u2713';
+      } else {
+        throw new Error();
+      }
+    } catch {
+      status.textContent='Something went wrong \u2014 please email us directly.';
+      status.style.color='#c0392b';
+      btn.textContent='Send enquiry \u2192';
+      btn.disabled=false;
+    }
+  });
+</script>
+
+</body>
+</html>
