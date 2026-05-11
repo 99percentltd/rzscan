@@ -6,55 +6,16 @@
   <title>RZ Scan</title>
 </head>
 <body>
-
   <style>
     html{scroll-behavior:smooth;}
-    .notice-bar{
-      width:100%;
-      padding:10px 40px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:20px;
-      font-family:var(--fm);
-      font-size:10px;
-      letter-spacing:0.14em;
-      text-transform:uppercase;
-      position:relative;
-    }
-    .notice-bar.coming-soon{
-      background:#c8a96e;
-      color:#0f0f0e;
-    }
-    .notice-bar.soft-launch{
-      background:#1a3a5c;
-      color:#c8a96e;
-    }
-    .notice-bar a{
-      color:inherit;
-      text-decoration:none;
-      border-bottom:0.5px solid currentColor;
-      padding-bottom:1px;
-    }
-    .notice-bar a:hover{
-      opacity:0.7;
-    }
-    .notice-dismiss{
-      position:absolute;
-      right:20px;
-      top:50%;
-      transform:translateY(-50%);
-      background:none;
-      border:none;
-      font-family:var(--fm);
-      font-size:13px;
-      color:inherit;
-      cursor:pointer;
-      opacity:0.5;
-      padding:4px 8px;
-      line-height:1;
-    }
+    .notice-bar{width:100%;padding:10px 40px;display:flex;justify-content:center;align-items:center;gap:20px;font-family:var(--fm);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;position:relative;}
+    .notice-bar.coming-soon{background:#c8a96e;color:#0f0f0e;}
+    .notice-bar.soft-launch{background:#1a3a5c;color:#c8a96e;}
+    .notice-bar a{color:inherit;text-decoration:none;border-bottom:0.5px solid currentColor;padding-bottom:1px;}
+    .notice-bar a:hover{opacity:0.7;}
+    .notice-dismiss{position:absolute;right:20px;top:50%;transform:translateY(-50%);background:none;border:none;font-family:var(--fm);font-size:13px;color:inherit;cursor:pointer;opacity:0.5;padding:4px 8px;line-height:1;}
     .notice-dismiss:hover{opacity:1;}
+
     @media(max-width:768px){
       .notice-bar{padding:10px 40px 10px 16px;font-size:9px;letter-spacing:0.1em;}
     }
@@ -146,8 +107,6 @@ nav{max-width:var(--mw);margin:0 auto;display:flex;justify-content:space-between
 .svc-name em{font-style:italic;}
 .svc-desc{font-size:11px;color:var(--ink-3);line-height:1.85;}
 .svc-tag{display:inline-block;margin-top:14px;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border-bottom:0.5px solid var(--accent);padding-bottom:2px;}
-
-
 
 /* ABSTRACT PANEL */
 .abs-wrap{border-bottom:0.5px solid var(--rule);}
@@ -529,31 +488,25 @@ footer{max-width:var(--mw);margin:0 auto;padding:28px 40px;display:flex;justify-
       </div>
       <div class="sec-r">
         <div class="prob-card">
-
           <div class="prob-n">01</div>
           <div class="prob-content">
             <div class="prob-title">A resourcing problem  <button class="reveal-toggle" data-group="the-problem" data-target="prob-1" data-more="[+]" data-less="[&mdash;]">[+]</button></div>
             <div class="prob-body reveal-body" id="prob-1" data-group="the-problem">Every hour a graduate or senior designer spends measuring a house is an hour not spent on design, documentation, or a billable client deliverable. A manual measure-up on a typical A&amp;A house ties up two people for half a day &mdash; before design has begun.</div>
-          </div>
-          
+          </div>          
         </div>
         <div class="prob-card">
-
           <div class="prob-n">02</div>
           <div class="prob-content">
             <div class="prob-title">The reconciliation problem  <button class="reveal-toggle" data-group="the-problem" data-target="prob-2" data-more="[+]" data-less="[&mdash;]">[+]</button></div>
             <div class="prob-body reveal-body" id="prob-2" data-group="the-problem">Manual dimensions never perfectly add up. Someone experienced makes an educated guess. If that guess is wrong, the error propagates silently through the design until a builder finds it on site &mdash; where it becomes expensive.</div>
-          </div>
-          
+          </div>          
         </div>
         <div class="prob-card">
-
           <div class="prob-n">03</div>
           <div class="prob-content">
             <div class="prob-title">The return visit  <button class="reveal-toggle" data-group="the-problem" data-target="prob-3" data-more="[+]" data-less="[&mdash;]">[+]</button></div>
             <div class="prob-body reveal-body" id="prob-3" data-group="the-problem">A missed ceiling height. A forgotten junction detail. A stair geometry that wasn&rsquo;t quite right. Return visits are common, disruptive to the project programme, and require scheduling around the homeowner all over again.</div>
           </div>
-          
         </div>
       </div>
     </div>
@@ -570,8 +523,6 @@ footer{max-width:var(--mw);margin:0 auto;padding:28px 40px;display:flex;justify-
   </div>
   <div class="svc-grid">
     <div class="svc">
-
-
       <div class="svc-layout">
         <svg class="svc-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="4" y="8" width="24" height="18" stroke="#c8a96e" stroke-width="0.75"/>
@@ -586,8 +537,6 @@ footer{max-width:var(--mw);margin:0 auto;padding:28px 40px;display:flex;justify-
           </div>
         </div>
       </div>
-
-
     </div>
     <div class="svc">
       <div class="svc-layout">
@@ -604,8 +553,6 @@ footer{max-width:var(--mw);margin:0 auto;padding:28px 40px;display:flex;justify-
           </div>
         </div>
       </div>
-
-
     </div>
     <div class="svc">
       <div class="svc-layout">
@@ -622,8 +569,6 @@ footer{max-width:var(--mw);margin:0 auto;padding:28px 40px;display:flex;justify-
           </div>
         </div>
       </div>
-
-
     </div>
   </div>
 </div>
@@ -688,9 +633,7 @@ footer{max-width:var(--mw);margin:0 auto;padding:28px 40px;display:flex;justify-
     <h2 class="sec-title" style="margin-bottom:0;">From enquiry to<br><em>delivery</em>, in four steps.</h2>
   </div>
 
-
   <div class="proc-grid">
-
     <div class="proc-step">
       <div class="proc-layout">
         <div class="step-n">01</div>
@@ -701,11 +644,8 @@ footer{max-width:var(--mw);margin:0 auto;padding:28px 40px;display:flex;justify-
           <div class="step-desc svc-desc reveal-body" id="step-1" data-group="the-works">Send us the project address, building type, and approximate floor area. We&rsquo;ll confirm a fixed price within 24 hours.</div>
         </div>
       </div>
-
-
       <div class="step-arr">&rarr;</div>
     </div>
-
     <div class="proc-step">
       <div class="proc-layout">
         <div class="step-n">02</div>
@@ -718,7 +658,6 @@ footer{max-width:var(--mw);margin:0 auto;padding:28px 40px;display:flex;justify-
         </div>
       </div>
     </div>
-
     <div class="proc-step">
       <div class="proc-layout">
         <div class="step-n">03</div>
@@ -731,7 +670,6 @@ footer{max-width:var(--mw);margin:0 auto;padding:28px 40px;display:flex;justify-
       </div>
       <div class="step-arr">&rarr;</div>
     </div>
-
     <div class="proc-step">
       <div class="proc-layout">
         <div class="step-n">04</div>
@@ -742,12 +680,8 @@ footer{max-width:var(--mw);margin:0 auto;padding:28px 40px;display:flex;justify-
           <div class="step-desc svc-desc reveal-body" id="step-4" data-group="the-works">Your registered .RCP and .E57 point cloud files plus an HxDR viewer link, delivered as soon as they&rsquo;re ready. Load straight into Revit and begin.</div>
         </div>
       </div>
-
     </div>
   </div>
-
-
-
 </div>
 
 <div class="about-wrap" id="about">
@@ -785,14 +719,11 @@ footer{max-width:var(--mw);margin:0 auto;padding:28px 40px;display:flex;justify-
   <div class="cta">
     <h2 class="cta-title">Ready to start with<br><em>accurate</em> existing conditions?</h2>
     <p class="cta-sub">Send us your project details and we&rsquo;ll respond with a fixed price within 24 hours. No obligations, no site visit required to quote.</p>
-
     <button class="cta-btn" id="quote-toggle" aria-expanded="false">
       Request a quote &rarr;
     </button>
-
     <div class="enquiry-wrap" id="enquiry-wrap">
       <form class="enquiry-form" action="https://formspree.io/f/xqenygzn" method="POST">
-
         <div class="ef-row">
           <label for="ef-name">Name</label>
           <input type="text" id="ef-name" name="name" placeholder="Your name" required>
@@ -831,21 +762,17 @@ footer{max-width:var(--mw);margin:0 auto;padding:28px 40px;display:flex;justify-
           <label for="ef-msg">Additional notes</label>
           <textarea id="ef-msg" name="message" rows="4" placeholder="Approximate floor area, access notes, preferred timing&hellip;"></textarea>
         </div>
-
         <div class="ef-row ef-row-btn">
           <span></span>
           <button type="submit" class="cta-btn ef-submit">Send enquiry &rarr;</button>
         </div>
-
         <div class="ef-row">
           <span></span>
           <p class="ef-status" id="ef-status"></p>
         </div>
-
       </form>
     </div>
-
-    <p class="cta-note">Serving Canberra ACT and Queanbeyan region &nbsp;&middot;&nbsp; Weekend availability &nbsp;&middot;&nbsp; Enquire for turnaround times</p>
+    <p class="cta-note">Serving Canberra and Queanbeyan region &nbsp;&middot;&nbsp; Weekend availability &nbsp;&middot;&nbsp; Enquire for turnaround times</p>
   </div>
 </div>
 
@@ -853,7 +780,7 @@ footer{max-width:var(--mw);margin:0 auto;padding:28px 40px;display:flex;justify-
   <div class="nav-logo">
    <span class="logo-rz">RZ</span><span class="logo-scan">scan</span>
  </div>
- <div class="foot-note">Canberra ACT &nbsp;&middot;&nbsp; hello@rzscan.com.au &nbsp;&middot;&nbsp; ABN 34 348 216 175</div>
+ <div class="foot-note">Canberra &nbsp;&middot;&nbsp; hello@rzscan.com.au &nbsp;&middot;&nbsp; ABN 34 348 216 175</div>
 </footer>
 </div>
 
@@ -937,6 +864,5 @@ footer{max-width:var(--mw);margin:0 auto;padding:28px 40px;display:flex;justify-
     }
   });
 </script>
-
 </body>
 </html>
