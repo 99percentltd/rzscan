@@ -226,7 +226,7 @@ footer{max-width:var(--mw);margin:0 auto;padding:28px 40px;display:flex;justify-
   .hero{grid-template-columns:1fr;}
   .hero-l{padding:48px 24px;border-right:none;border-bottom:0.5px solid var(--rule);}
   .hero-title{font-size:38px;}
-  .hero-r{min-height:240px;}
+  .hero-r{min-height:360px;}
 
   .stat-row{grid-template-columns:1fr 1fr;}
   .stat{padding:24px;}
@@ -244,7 +244,7 @@ footer{max-width:var(--mw);margin:0 auto;padding:28px 40px;display:flex;justify-
   .svc:last-child{border-bottom:none;}
 
   .abs{grid-template-columns:1fr;}
-  .abs-l{min-height:240px;}
+  .abs-l{min-height:360px;}
   .abs-r{padding:48px 24px;}
 
   .proc-grid{grid-template-columns:1fr 1fr;}
@@ -328,22 +328,26 @@ footer{max-width:var(--mw);margin:0 auto;padding:28px 40px;display:flex;justify-
             <line x1="80" y1="0" x2="80" y2="520"/><line x1="160" y1="0" x2="160" y2="520"/>
             <line x1="240" y1="0" x2="240" y2="520"/><line x1="320" y1="0" x2="320" y2="520"/>
           </g>
-          <g opacity="0.55" stroke="#c8a96e" fill="none">
+          <g opacity="0.55" stroke="#c8a96e" fill="none" transform="translate(0,55)">
             <rect x="60" y="110" width="280" height="190" stroke-width="0.75"/>
             <line x1="60" y1="205" x2="195" y2="205" stroke-width="0.5"/>
             <line x1="195" y1="110" x2="195" y2="300" stroke-width="0.5"/>
-            <line x1="195" y1="250" x2="340" y2="250" stroke-width="0.5"/>
+            <line x1="195" y1="245" x2="340" y2="245" stroke-width="0.5"/>
             <line x1="98" y1="110" x2="126" y2="110" stroke="#f5f4f0" stroke-width="1.5"/>
             <line x1="248" y1="110" x2="296" y2="110" stroke="#f5f4f0" stroke-width="1.5"/>
             <line x1="60" y1="158" x2="60" y2="185" stroke="#f5f4f0" stroke-width="1.5"/>
             <line x1="340" y1="158" x2="340" y2="185" stroke="#f5f4f0" stroke-width="1.5"/>
             <path d="M195 205 Q232 205 232 245" stroke-width="0.5" stroke-dasharray="2,2"/>
           </g>
-          <g fill="#c8a96e">
-            <circle cx="62" cy="112" r="1.5" opacity="0.9"/><circle cx="340" cy="112" r="1.5" opacity="0.9"/>
-            <circle cx="62" cy="300" r="1.5" opacity="0.9"/><circle cx="340" cy="300" r="1.5" opacity="0.9"/>
-            <circle cx="195" cy="112" r="1.5" opacity="0.9"/><circle cx="195" cy="300" r="1.5" opacity="0.9"/>
+          <g fill="#c8a96e" transform="translate(0,55)">
+            <circle cx="60"  cy="110" r="1.5" opacity="0.9"/>
+            <circle cx="195" cy="110" r="1.5" opacity="0.9"/>
+            <circle cx="340" cy="110" r="1.5" opacity="0.9"/>
+            <circle cx="60"  cy="300" r="1.5" opacity="0.9"/>
+            <circle cx="195" cy="300" r="1.5" opacity="0.9"/>
+            <circle cx="340" cy="300" r="1.5" opacity="0.9"/>
             <circle cx="195" cy="205" r="1.5" opacity="0.9"/>
+
             <circle cx="88" cy="145" r="1" opacity="0.5"/><circle cx="108" cy="138" r="1" opacity="0.4"/>
             <circle cx="128" cy="152" r="1" opacity="0.6"/><circle cx="148" cy="136" r="1" opacity="0.3"/>
             <circle cx="165" cy="148" r="1" opacity="0.5"/><circle cx="78" cy="162" r="1" opacity="0.4"/>
@@ -361,7 +365,7 @@ footer{max-width:var(--mw);margin:0 auto;padding:28px 40px;display:flex;justify-
             <circle cx="268" cy="260" r="1" opacity="0.6"/><circle cx="292" cy="268" r="1" opacity="0.3"/>
             <circle cx="315" cy="275" r="1" opacity="0.5"/>
           </g>
-          <g opacity="0.45">
+          <g opacity="0.45" transform="translate(0,0)">
             <line x1="30" y1="400" x2="54" y2="400" stroke="#c8a96e" stroke-width="0.75"/>
             <line x1="30" y1="400" x2="30" y2="376" stroke="#c8a96e" stroke-width="0.75"/>
             <line x1="30" y1="400" x2="18" y2="388" stroke="#c8a96e" stroke-width="0.75"/>
@@ -369,16 +373,17 @@ footer{max-width:var(--mw);margin:0 auto;padding:28px 40px;display:flex;justify-
             <text x="26" y="372" font-family="DM Mono,monospace" font-size="8" fill="#c8a96e" letter-spacing="0.1em">Z</text>
             <text x="10" y="390" font-family="DM Mono,monospace" font-size="8" fill="#c8a96e" letter-spacing="0.1em">Y</text>
           </g>
-          <g opacity="0.65">
+          <g opacity="0.65" transform="translate(0,-40)">
             <text x="200" y="440" font-family="DM Mono,monospace" font-size="9" fill="#c8a96e" text-anchor="middle" letter-spacing="0.15em">ACCURACY &plusmn;6MM</text>
             <line x1="112" y1="436" x2="138" y2="436" stroke="#c8a96e" stroke-width="0.5"/>
             <line x1="262" y1="436" x2="288" y2="436" stroke="#c8a96e" stroke-width="0.5"/>
           </g>
-          <g opacity="0.35">
-            <line x1="60" y1="472" x2="340" y2="472" stroke="#c8a96e" stroke-width="0.5"/>
+          <g opacity="0.65" transform="translate(0,-345)">
+            <line x1="60" y1="472" x2="180" y2="472" stroke="#c8a96e" stroke-width="0.5"/>
+            <line x1="220" y1="472" x2="340" y2="472" stroke="#c8a96e" stroke-width="0.5"/>
             <line x1="60" y1="468" x2="60" y2="476" stroke="#c8a96e" stroke-width="0.5"/>
             <line x1="340" y1="468" x2="340" y2="476" stroke="#c8a96e" stroke-width="0.5"/>
-            <text x="200" y="488" font-family="DM Mono,monospace" font-size="8" fill="#c8a96e" text-anchor="middle" letter-spacing="0.1em">10M</text>
+            <text x="200" y="475" font-family="DM Mono,monospace" font-size="8" fill="#c8a96e" text-anchor="middle" letter-spacing="0.1em">10M</text>
           </g>
         </svg>
       </div>
@@ -499,9 +504,9 @@ footer{max-width:var(--mw);margin:0 auto;padding:28px 40px;display:flex;justify-
 <div class="abs-wrap">
   <div class="abs">
     <div class="abs-l">
-      <svg viewBox="0 0 400 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0;" preserveAspectRatio="xMidYMid slice">
+      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0;" preserveAspectRatio="xMidYMid slice">
         <rect width="400" height="380" fill="#1a3a5c"/>
-        <g opacity="0.1" stroke="#c8a96e" stroke-width="0.5">
+        <g opacity="0.1" stroke="#c8a96e" stroke-width="0.5" transform="translate(0,-5)">
           <line x1="-50" y1="90" x2="450" y2="390"/><line x1="-50" y1="50" x2="450" y2="350"/>
           <line x1="-50" y1="10" x2="450" y2="310"/><line x1="-50" y1="-30" x2="450" y2="270"/>
           <line x1="-50" y1="-70" x2="450" y2="230"/><line x1="-50" y1="130" x2="350" y2="390"/>
@@ -509,14 +514,14 @@ footer{max-width:var(--mw);margin:0 auto;padding:28px 40px;display:flex;justify-
           <line x1="450" y1="10" x2="-50" y2="310"/><line x1="450" y1="-30" x2="-50" y2="270"/>
           <line x1="450" y1="130" x2="150" y2="390"/>
         </g>
-        <g opacity="0.65" stroke="#c8a96e" fill="none">
+        <g opacity="0.65" stroke="#c8a96e" fill="none" transform="translate(0,-5)">
           <polygon points="200,72 316,140 200,208 84,140" stroke-width="0.75"/>
           <polygon points="84,140 84,272 200,340 200,208" stroke-width="0.75"/>
           <polygon points="200,208 200,340 316,272 316,140" stroke-width="0.75"/>
           <line x1="200" y1="72" x2="200" y2="208" stroke-width="0.4" opacity="0.4"/>
           <line x1="84" y1="140" x2="316" y2="140" stroke-width="0.4" opacity="0.4"/>
         </g>
-        <g fill="#c8a96e">
+        <g fill="#c8a96e" transform="translate(0,-5)">
           <circle cx="138" cy="155" r="1.2" opacity="0.7"/><circle cx="158" cy="165" r="1.2" opacity="0.5"/>
           <circle cx="118" cy="170" r="1.2" opacity="0.8"/><circle cx="143" cy="188" r="1.2" opacity="0.6"/>
           <circle cx="162" cy="195" r="1.2" opacity="0.4"/><circle cx="123" cy="205" r="1.2" opacity="0.7"/>
@@ -529,7 +534,7 @@ footer{max-width:var(--mw);margin:0 auto;padding:28px 40px;display:flex;justify-
           <circle cx="218" cy="108" r="1.2" opacity="0.8"/><circle cx="243" cy="120" r="1.2" opacity="0.4"/>
           <circle cx="150" cy="118" r="1.2" opacity="0.6"/>
         </g>
-        <g opacity="0.55">
+        <g opacity="0.55" transform="translate(0,-25)">
           <circle cx="200" cy="316" r="4" fill="none" stroke="#f5f4f0" stroke-width="0.75"/>
           <circle cx="200" cy="316" r="1.5" fill="#f5f4f0"/>
           <line x1="200" y1="308" x2="200" y2="300" stroke="#f5f4f0" stroke-width="0.5"/>
@@ -804,5 +809,6 @@ footer{max-width:var(--mw);margin:0 auto;padding:28px 40px;display:flex;justify-
     }
   });
 </script>
+
 </body>
 </html>
