@@ -301,6 +301,8 @@ nav {
   align-items: flex-end;
   gap: 24px;
 }
+.svc-media { max-width: var(--mw); margin: 0 auto; }
+.svc-media img { width: 100%; aspect-ratio: 2 / 1; object-fit: cover; display: block; }
 .svc-grid-wrap { border-bottom: 0.5px solid var(--rule); }
 .svc-grid { max-width: var(--mw); margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); }
 .svc { padding: 36px 40px; border-right: 0.5px solid var(--rule); }
