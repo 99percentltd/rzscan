@@ -404,7 +404,7 @@ nav {
 }
 .cta-title { font-family: var(--fd); font-size: 48px; font-weight: 300; line-height: 1.1; max-width: 560px; }
 .cta-title em { font-style: italic; color: var(--accent); }
-.cta-sub { font-family: var(--fm); font-size: 14px; color: var(--ink-3); max-width: 380px; line-height: 1.8; }
+.cta-sub { font-family: var(--fm); font-size: 14px; color: var(--ink-3); max-width: 400px; line-height: 1.8; }
 .cta-form { display: flex; width: 100%; max-width: 460px; border: 0.5px solid var(--ink); }
 .cta-input {
   flex: 1;
