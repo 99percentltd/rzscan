@@ -343,7 +343,7 @@ nav {
 .proc-header { max-width: var(--mw); margin: 0 auto; padding: 48px 40px 28px; border-bottom: 0.5px solid var(--rule); }
 .proc-grid { max-width: var(--mw); margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
 .proc-layout { display: flex; align-items: baseline; gap: 16px; }
-.proc-step { padding: 32px 40px; border-right: 0.5px solid var(--rule); position: relative; }
+.proc-step { padding: 32px 40px; border-right: 0.5px solid var(--rule); position: relative; min-width: 0; }
 .proc-step:last-child { border-right: none; }
 .step-n {
   font-family: var(--fd);
@@ -377,6 +377,7 @@ nav {
   align-items: center;
   gap: 10px;
 }
+.cred-list li:last-child { border-bottom: none; }
 .cred-list li::before {
   content: '';
   width: 4px;
