@@ -326,7 +326,7 @@ nav {
   padding: 12px 0;
   border-bottom: 0.5px solid var(--rule);
   font-size: 13px;
-  color: var(--ink-2);
+  color: var(--paper-2);
   display: flex;
   align-items: center;
   gap: 10px;
