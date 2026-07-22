@@ -33,6 +33,7 @@ body {
   --navy: #1a3a5c;
   --accent-navy: #223a5b;
   --rule: rgba(15, 15, 14, 0.1);
+  --rule-2: #ebeae6;
   --fd: 'Cormorant Garamond', serif;
   --fm: 'DM Mono', monospace;
   --mw: 1200px;
@@ -101,7 +102,7 @@ body {
   top: 0;
   background: var(--accent-navy);
   z-index: 100;
-  border-bottom: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule-2);
 }
 nav {
   max-width: var(--mw);
@@ -165,7 +166,7 @@ nav {
    Hero
    ========================================================================== */
 
-.hero-wrap { border-bottom: 0.5px solid var(--rule); background: var(--accent-navy);}
+.hero-wrap { border-bottom: 0.5px solid var(--rule-2); background: var(--accent-navy);}
 .hero {
   max-width: var(--mw);
   margin: 0 auto;
@@ -178,7 +179,7 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-right: 0.5px solid var(--rule);
+  border-right: 0.5px solid var(--rule-2);
   min-height: 0;
 }
 .eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 28px; }
@@ -190,7 +191,7 @@ nav {
   line-height: 1.85;
   max-width: 360px;
   padding-top: 32px;
-  border-top: 0.5px solid var(--rule);
+  border-top: 0.5px solid var(--rule-2);
   margin-top: 32px;
 }
 .hero-r { background: var(--navy); position: relative; overflow: hidden; }
@@ -199,9 +200,9 @@ nav {
    Stat row
    ========================================================================== */
 
-.stat-wrap { border-bottom: 0.5px solid var(--rule); background: var(--accent-navy);}
+.stat-wrap { border-bottom: 0.5px solid var(--rule-2); background: var(--accent-navy);}
 .stat-row { max-width: var(--mw); margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); }
-.stat { padding: 32px 40px; border-right: 0.5px solid var(--rule); }
+.stat { padding: 32px 40px; border-right: 0.5px solid var(--rule-2); }
 .stat:last-child { border-right: none; }
 .stat-num { font-family: var(--fd); font-size: 40px; font-weight: 300; line-height: 1; margin-bottom: 6px; color: var(--paper);}
 .stat-num em { font-style: normal; color: var(--accent); }
@@ -250,7 +251,7 @@ nav {
   max-width: var(--mw);
   margin: 0 auto;
   padding: 48px 40px 28px;
-  border-bottom: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule-2);
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -259,9 +260,9 @@ nav {
 }
 .svc-media { max-width: var(--mw); margin: 0 auto; }
 .svc-media img { width: 100%; aspect-ratio: 2 / 1; object-fit: cover; display: block; }
-.svc-grid-wrap { border-bottom: 0.5px solid var(--rule); background: var(--accent-navy);}
+.svc-grid-wrap { border-bottom: 0.5px solid var(--rule-2); background: var(--accent-navy);}
 .svc-grid { max-width: var(--mw); margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); }
-.svc { padding: 36px 40px; border-right: 0.5px solid var(--rule); }
+.svc { padding: 36px 40px; border-right: 0.5px solid var(--rule-2); }
 .svc:last-child { border-right: none; }
 .svc-layout { display: flex; align-items: flex-start; gap: 16px; }
 .svc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-bottom: 0; }
@@ -283,7 +284,7 @@ nav {
    Abstract / technology panel
    ========================================================================== */
 
-.abs-wrap { border-bottom: 0.5px solid var(--rule); background: var(--accent-navy);}
+.abs-wrap { border-bottom: 0.5px solid var(--rule-2); background: var(--accent-navy);}
 .abs { max-width: var(--mw); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
 .abs-l { background: var(--navy); position: relative; overflow: hidden; }
 .sketchfab-embed-wrapper { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -305,7 +306,7 @@ nav {
   font-family: var(--fd);
   font-size: 48px;
   font-weight: 300;
-  color: var(--paper-2);
+  color: var(--accent);
   line-height: 1;
   margin-bottom: 10px;
   -webkit-text-stroke: 0.5px var(--rule);
@@ -319,15 +320,15 @@ nav {
    About
    ========================================================================== */
 
-.about-wrap { border-bottom: 0.5px solid var(--rule); background: var(--accent-navy);}
+.about-wrap { border-bottom: 0.5px solid var(--rule-2); background: var(--accent-navy);}
 .about { max-width: var(--mw); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; color: var(--paper);}
-.about-l { padding: 64px 40px; border-right: 0.5px solid var(--rule); }
+.about-l { padding: 64px 40px; border-right: 0.5px solid var(--rule-2); }
 .about-r { padding: 64px 40px; }
 .about-body { color: var(--ink-4); }
 .cred-list { list-style: none; margin-top: 28px; }
 .cred-list li {
   padding: 12px 0;
-  border-bottom: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule-2);
   font-size: 13px;
   display: flex;
   align-items: center;
@@ -533,14 +534,14 @@ footer {
   .mob-menu { padding: 20px 24px; }
 
   .hero { grid-template-columns: 1fr; }
-  .hero-l { padding: 48px 24px; border-right: none; border-bottom: 0.5px solid var(--rule); }
+  .hero-l { padding: 48px 24px; border-right: none; border-bottom: 0.5px solid var(--rule-2); }
   .hero-title { font-size: 38px; }
   .hero-r { min-height: 360px; }
 
   .stat-row { grid-template-columns: 1fr 1fr; }
   .stat { padding: 24px; }
   .stat:nth-child(2) { border-right: none; }
-  .stat:nth-child(3) { border-top: 0.5px solid var(--rule); grid-column: 1 / -1; border-right: none; }
+  .stat:nth-child(3) { border-top: 0.5px solid var(--rule-2); grid-column: 1 / -1; border-right: none; }
 
   .sec { grid-template-columns: 1fr; }
   .sec-l { padding: 48px 24px; border-right: none; border-bottom: 0.5px solid var(--rule); }
@@ -549,7 +550,7 @@ footer {
 
   .svc-header { flex-direction: column; align-items: flex-start; padding: 36px 24px 24px; }
   .svc-grid { grid-template-columns: 1fr; }
-  .svc { border-right: none; border-bottom: 0.5px solid var(--rule); padding: 32px 24px; }
+  .svc { border-right: none; border-bottom: 0.5px solid var(--rule-2); padding: 32px 24px; }
   .svc:last-child { border-bottom: none; }
 
   .abs { grid-template-columns: 1fr; }
@@ -564,7 +565,7 @@ footer {
   .step-arr { display: none; }
 
   .about { grid-template-columns: 1fr; }
-  .about-l { padding: 48px 24px; border-right: none; border-bottom: 0.5px solid var(--rule); }
+  .about-l { padding: 48px 24px; border-right: none; border-bottom: 0.5px solid var(--rule-2); }
   .about-r { padding: 48px 24px; }
 
   .cta { padding: 64px 24px; }
