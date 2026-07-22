@@ -499,9 +499,9 @@ footer {
 }
 .reveal-toggle:hover { color: var(--accent); animation-play-state: paused; }
 @keyframes toggle-pulse {
-  0%, 70% { color: var(--ink-3); }
+  0%, 70% { color: var(--accent); }
   85% { color: var(--paper); }
-  100% { color: var(--ink-3); }
+  100% { color: var(--accent); }
 }
 
 /* ==========================================================================
