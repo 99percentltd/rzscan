@@ -47,15 +47,21 @@ toggleBtn.addEventListener('click', function () {
 });
 
 /* ── Top notice bar dismissal (persisted for the session) ── */
+/* Guarded: on pages without a notice bar in the markup, these lookups
+   return null, and calling addEventListener() on null would throw and
+   silently kill every script block below this one (reveal-toggles,
+   enquiry form submit). */
 const noticeBar = document.getElementById('notice-bar');
 const noticeDismiss = document.getElementById('notice-dismiss');
-if (sessionStorage.getItem('notice-dismissed')) {
-  noticeBar.style.display = 'none';
+if (noticeBar && noticeDismiss) {
+  if (sessionStorage.getItem('notice-dismissed')) {
+    noticeBar.style.display = 'none';
+  }
+  noticeDismiss.addEventListener('click', function () {
+    noticeBar.style.display = 'none';
+    sessionStorage.setItem('notice-dismissed', 'true');
+  });
 }
-noticeDismiss.addEventListener('click', function () {
-  noticeBar.style.display = 'none';
-  sessionStorage.setItem('notice-dismissed', 'true');
-});
 
 /* ── "Read more" reveal toggles (problem cards, services, process steps, about) ── */
 document.querySelectorAll('.reveal-toggle').forEach(function (btn) {
