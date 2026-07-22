@@ -26,6 +26,7 @@ body {
   --ink: #0f0f0e;
   --ink-2: #3a3a38;
   --ink-3: #7a7a77;
+  --ink-4: #ebeae6;
   --paper: #f5f4f0;
   --paper-2: #7a7a77;
   --accent: #c8a96e;
@@ -180,12 +181,12 @@ nav {
   border-right: 0.5px solid var(--rule);
   min-height: 0;
 }
-.eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--paper-2); margin-bottom: 28px; }
+.eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 28px; }
 .hero-title { font-family: var(--fd); font-size: 52px; font-weight: 300; line-height: 1.08; letter-spacing: -0.01em; margin-bottom: 0; color: var(--paper);}
 .hero-title em { font-style: italic; color: var(--accent); }
 .hero-sub {
   font-size: 14px;
-  color: var(--paper);
+  color: var(--ink-4);
   line-height: 1.85;
   max-width: 360px;
   padding-top: 32px;
@@ -204,7 +205,7 @@ nav {
 .stat:last-child { border-right: none; }
 .stat-num { font-family: var(--fd); font-size: 40px; font-weight: 300; line-height: 1; margin-bottom: 6px; color: var(--paper);}
 .stat-num em { font-style: normal; color: var(--accent); }
-.stat-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--paper-2); }
+.stat-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-4); }
 
 /* ==========================================================================
    Generic two-column sections
@@ -238,6 +239,7 @@ nav {
 .prob-n { flex-shrink: 0; margin-bottom: 0; }
 .prob-title { font-size: 12px; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); margin-bottom: 5px; }
 .prob-body { font-size: 13px; color: var(--ink-3); line-height: 1.8; }
+.sec-body { color: var(--paper-2)}
 
 /* ==========================================================================
    Services
@@ -265,7 +267,7 @@ nav {
 .svc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-bottom: 0; }
 .svc-name { font-family: var(--fd); font-size: 21px; font-weight: 300; line-height: 1.2; margin-bottom: 10px; color: var(--paper);}
 .svc-name em { font-style: italic; }
-.svc-desc { font-size: 13px; color: var(--paper-2); line-height: 1.85; }
+.svc-desc { font-size: 13px; color: var(--ink-4); line-height: 1.85; }
 .svc-tag {
   display: inline-block;
   margin-top: 14px;
@@ -287,7 +289,7 @@ nav {
 .sketchfab-embed-wrapper { position: absolute; inset: 0; width: 100%; height: 100%; }
 .sketchfab-embed-wrapper iframe { width: 100%; height: 100%; display: block; }
 .abs-r { padding: 64px 40px; display: flex; flex-direction: column; justify-content: center; color: var(--paper);}
-.abs-r .sec-body { max-width: 100%; color: var(--paper-2);}
+.abs-r .sec-body { max-width: 100%; color: var(--ink-4);}
 
 /* ==========================================================================
    Process steps
@@ -321,7 +323,7 @@ nav {
 .about { max-width: var(--mw); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; color: var(--paper);}
 .about-l { padding: 64px 40px; border-right: 0.5px solid var(--rule); }
 .about-r { padding: 64px 40px; }
-.sec-body { color: var(--paper-2); }
+.about-body { color: var(--ink-4); }
 .cred-list { list-style: none; margin-top: 28px; }
 .cred-list li {
   padding: 12px 0;
