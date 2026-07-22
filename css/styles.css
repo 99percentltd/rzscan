@@ -323,7 +323,7 @@ nav {
 .about { max-width: var(--mw); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; color: var(--paper);}
 .about-l { padding: 64px 40px; border-right: 0.5px solid var(--rule); }
 .about-r { padding: 64px 40px; }
-.sec-body { color: var(--ink-4); }
+.about-body { color: var(--ink-4); }
 .cred-list { list-style: none; margin-top: 28px; }
 .cred-list li {
   padding: 12px 0;
