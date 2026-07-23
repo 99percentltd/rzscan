@@ -143,7 +143,7 @@ nav {
 .nav-cta:hover { background: var(--accent); color: var(--paper); }
 
 .ham { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
-.ham span { display: block; width: 22px; height: 1px; background: var(--ink); margin: 5px 0; transition: all 0.2s; }
+.ham span { display: block; width: 22px; height: 1px; background: var(--paper); margin: 5px 0; transition: all 0.2s; }
 
 .mob-menu {
   display: none;
@@ -504,6 +504,23 @@ footer {
   100% { color: var(--accent); }
 }
 
+/* Stagger: same 5s rate/easing for every toggle, but each starts at a
+   different negative offset into the cycle so they twinkle independently
+   instead of all flashing in lockstep. */
+.reveal-toggle[data-target="prob-1"]  { animation-delay: -0.3s; }
+.reveal-toggle[data-target="prob-2"]  { animation-delay: -2.4s; }
+.reveal-toggle[data-target="prob-3"]  { animation-delay: -4.2s; }
+.reveal-toggle[data-target="svc-1"]   { animation-delay: -0.9s; }
+.reveal-toggle[data-target="svc-2"]   { animation-delay: -2.8s; }
+.reveal-toggle[data-target="svc-3"]   { animation-delay: -4.7s; }
+.reveal-toggle[data-target="tech-1"]  { animation-delay: -1.4s; }
+.reveal-toggle[data-target="step-1"]  { animation-delay: -0.1s; }
+.reveal-toggle[data-target="step-2"]  { animation-delay: -1.9s; }
+.reveal-toggle[data-target="step-3"]  { animation-delay: -3.2s; }
+.reveal-toggle[data-target="step-4"]  { animation-delay: -3.6s; }
+.reveal-toggle[data-target="about-1"] { animation-delay: -0.6s; }
+.reveal-toggle[data-target="about-2"] { animation-delay: -2.1s; }
+
 /* ==========================================================================
    Misc
    ========================================================================== */
@@ -580,7 +597,7 @@ footer {
 @media (max-width: 480px) {
   .hero-title { font-size: 32px; }
   .stat-row { grid-template-columns: 1fr; }
-  .stat { border-right: none !important; border-top: 0.5px solid var(--rule); }
+  .stat { border-right: none !important; border-top: 0.5px solid var(--rule-2); }
   .stat:first-child { border-top: none; }
   .stat { grid-column: auto !important; }
   .proc-grid { grid-template-columns: 1fr; }
