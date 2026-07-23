@@ -503,6 +503,14 @@ footer {
   85% { color: var(--paper); }
   100% { color: var(--accent); }
 }
+/* Same pulse, but fades to --accent-navy instead of --paper — for toggles
+   sitting on the dark navy background, so the flash fades into that
+   background instead of flashing pale off-white against it. */
+@keyframes toggle-pulse-dark {
+  0%, 70% { color: var(--accent); }
+  85% { color: var(--accent-navy); }
+  100% { color: var(--accent); }
+}
 
 /* Stagger: same 5s rate/easing for every toggle, but each starts at a
    different negative offset into the cycle so they twinkle independently
@@ -510,16 +518,19 @@ footer {
 .reveal-toggle[data-target="prob-1"]  { animation-delay: -0.3s; }
 .reveal-toggle[data-target="prob-2"]  { animation-delay: -2.4s; }
 .reveal-toggle[data-target="prob-3"]  { animation-delay: -4.2s; }
-.reveal-toggle[data-target="svc-1"]   { animation-delay: -0.9s; }
-.reveal-toggle[data-target="svc-2"]   { animation-delay: -2.8s; }
-.reveal-toggle[data-target="svc-3"]   { animation-delay: -4.7s; }
-.reveal-toggle[data-target="tech-1"]  { animation-delay: -1.4s; }
+/* svc-1/2/3 and tech-1 sit on the dark --accent-navy background
+   (.svc-grid-wrap / .abs-wrap) — use the dark-fade variant. */
+.reveal-toggle[data-target="svc-1"]   { animation-delay: -0.9s; animation-name: toggle-pulse-dark; }
+.reveal-toggle[data-target="svc-2"]   { animation-delay: -2.8s; animation-name: toggle-pulse-dark; }
+.reveal-toggle[data-target="svc-3"]   { animation-delay: -4.7s; animation-name: toggle-pulse-dark; }
+.reveal-toggle[data-target="tech-1"]  { animation-delay: -1.4s; animation-name: toggle-pulse-dark; }
 .reveal-toggle[data-target="step-1"]  { animation-delay: -0.1s; }
 .reveal-toggle[data-target="step-2"]  { animation-delay: -1.9s; }
 .reveal-toggle[data-target="step-3"]  { animation-delay: -3.2s; }
 .reveal-toggle[data-target="step-4"]  { animation-delay: -3.6s; }
-.reveal-toggle[data-target="about-1"] { animation-delay: -0.6s; }
-.reveal-toggle[data-target="about-2"] { animation-delay: -2.1s; }
+/* about-1/2 sit on the dark --accent-navy background (.about-wrap). */
+.reveal-toggle[data-target="about-1"] { animation-delay: -0.6s; animation-name: toggle-pulse-dark; }
+.reveal-toggle[data-target="about-2"] { animation-delay: -2.1s; animation-name: toggle-pulse-dark; }
 
 /* ==========================================================================
    Misc
