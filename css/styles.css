@@ -176,19 +176,30 @@ nav {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
   align-items: stretch;
 }
 .hero-l {
-  padding: 64px 40px;
+  grid-column: 1;
+  grid-row: 1;
+  padding: 64px 40px 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   border-right: 0.5px solid var(--rule-2);
   min-height: 0;
 }
 .eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 28px; }
 .hero-title { font-family: var(--fd); font-size: 48px; font-weight: 300; line-height: 1.08; letter-spacing: -0.01em; margin-bottom: 0; color: var(--paper); }
 .hero-title em { font-style: italic; color: var(--accent); }
+.hero-sub-wrap {
+  grid-column: 1;
+  grid-row: 2;
+  padding: 0 40px 64px;
+  border-right: 0.5px solid var(--rule-2);
+  display: flex;
+  align-items: flex-start;
+}
 .hero-sub {
   font-size: 14px;
   color: var(--ink-4);
@@ -198,7 +209,7 @@ nav {
   border-top: 0.5px solid var(--rule-2);
   margin-top: 32px;
 }
-.hero-r { background: var(--navy); position: relative; overflow: hidden; }
+.hero-r { grid-column: 2; grid-row: 1 / 3; background: var(--navy); position: relative; overflow: hidden; }
 
 /* ==========================================================================
    Stat row
@@ -565,10 +576,11 @@ footer {
   .ham { display: block; }
   .mob-menu { padding: 20px 24px; }
 
-  .hero { grid-template-columns: 1fr; }
-  .hero-l { padding: 48px 24px; border-right: none; border-bottom: 0.5px solid var(--rule-2); }
+  .hero { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .hero-l { grid-column: 1; grid-row: auto; order: 1; padding: 48px 24px 32px; border-right: none; }
   .hero-title { font-size: 38px; }
-  .hero-r { min-height: 360px; }
+  .hero-r { grid-column: 1; grid-row: auto; order: 2; min-height: 360px; }
+  .hero-sub-wrap { grid-column: 1; grid-row: auto; order: 3; padding: 0 24px 48px; border-right: none; }
 
   .stat-row { grid-template-columns: 1fr 1fr; }
   .stat { padding: 24px; }
