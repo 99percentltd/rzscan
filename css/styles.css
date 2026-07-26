@@ -209,6 +209,11 @@ nav {
   border-top: 0.5px solid var(--rule-2);
   margin-top: 32px;
 }
+.hero-sub-block .hero-sub { margin-bottom: 0; }
+/* Revealed portion of the hero paragraph: shares hero-sub's type styling,
+   but the rule/spacing above belongs to the visible first line only. */
+.hero-sub-more { padding-top: 0; border-top: none; margin-top: 0; }
+.hero-sub-more p { margin: 12px 0 0; }
 .hero-r { grid-column: 2; grid-row: 1 / 3; background: var(--navy); position: relative; overflow: hidden; }
 
 /* ==========================================================================
@@ -236,6 +241,14 @@ nav {
 .sec-title em { font-style: italic; }
 .sec-body { font-family: var(--fm); font-size: 14px; color: var(--ink-2); line-height: 1.9; }
 .sec-body p + p { margin-top: 14px; }
+.sub-label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
 
 /* ==========================================================================
    Problem cards
@@ -497,8 +510,9 @@ footer {
    Reveal toggle ("read more" expanders)
    ========================================================================== */
 
-.reveal-body { overflow: hidden; max-height: 0; transition: max-height 0.4s ease; font-family: var(--fm); }
-.reveal-body.open { max-height: 600px; }
+.reveal-body { overflow: hidden; max-height: 0; transition: grid-template-rows 0.4s ease; font-family: var(--fm); display: grid; grid-template-rows: 0fr; justify-items: start; }
+.reveal-body.open { max-height: none; grid-template-rows: 1fr; }
+.reveal-body > * { overflow: hidden; min-height: 0; }
 .reveal-toggle {
   background: none;
   border: none;
@@ -533,6 +547,9 @@ footer {
 .reveal-toggle[data-target="prob-1"]  { animation-delay: -0.3s; }
 .reveal-toggle[data-target="prob-2"]  { animation-delay: -2.4s; }
 .reveal-toggle[data-target="prob-3"]  { animation-delay: -4.2s; }
+/* hero-1 sits on the dark --accent-navy background (.hero-wrap) —
+   use the dark-fade variant. */
+.reveal-toggle[data-target="hero-1"]  { animation-delay: -3.9s; animation-name: toggle-pulse-dark; }
 /* svc-1/2/3 and tech-1 sit on the dark --accent-navy background
    (.svc-grid-wrap / .abs-wrap) — use the dark-fade variant. */
 .reveal-toggle[data-target="svc-1"]   { animation-delay: -0.9s; animation-name: toggle-pulse-dark; }
