@@ -510,9 +510,8 @@ footer {
    Reveal toggle ("read more" expanders)
    ========================================================================== */
 
-.reveal-body { overflow: hidden; max-height: 0; transition: grid-template-rows 0.4s ease; font-family: var(--fm); display: grid; grid-template-rows: 0fr; justify-items: start; line-height: 0; }
-.reveal-body.open { max-height: none; grid-template-rows: 1fr; }
-.reveal-body > * { overflow: hidden; min-height: 0; line-height: 1.85; }
+.reveal-body { overflow: hidden; max-height: 0; transition: max-height 0.4s ease; font-family: var(--fm); }
+.reveal-body.open { max-height: 600px; }
 .reveal-toggle {
   background: none;
   border: none;
@@ -550,7 +549,6 @@ footer {
 /* hero-1 sits on the dark --accent-navy background (.hero-wrap) —
    use the dark-fade variant. */
 .reveal-toggle[data-target="hero-1"]  { animation-delay: -3.9s; animation-name: toggle-pulse-dark; }
-.reveal-toggle[data-target="hero-1"] { padding-top: 0; }
 /* svc-1/2/3 and tech-1 sit on the dark --accent-navy background
    (.svc-grid-wrap / .abs-wrap) — use the dark-fade variant. */
 .reveal-toggle[data-target="svc-1"]   { animation-delay: -0.9s; animation-name: toggle-pulse-dark; }
