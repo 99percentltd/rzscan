@@ -511,7 +511,7 @@ footer {
    ========================================================================== */
 
 .reveal-body { overflow: hidden; max-height: 0; transition: max-height 0.4s ease; font-family: var(--fm); }
-.reveal-body.open { max-height: 600px; }
+.reveal-body.open { max-height: 6000px; }
 .reveal-toggle {
   background: none;
   border: none;
