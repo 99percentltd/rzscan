@@ -520,7 +520,7 @@ footer {
   letter-spacing: 0.12em;
   color: var(--accent);
   cursor: pointer;
-  padding: 10px 0 0;
+  padding: 5px 0 0;
   display: inline-block;
   text-transform: uppercase;
   animation: toggle-pulse 5s ease-in-out infinite;
