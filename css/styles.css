@@ -319,6 +319,16 @@ nav {
 .sketchfab-embed-wrapper iframe { width: 100%; height: 100%; display: block; }
 .abs-r { padding: 64px 40px; display: flex; flex-direction: column; justify-content: center; color: var(--paper);}
 .abs-r .sec-body { max-width: 100%; color: var(--ink-4);}
+.tour-link {
+  color: var(--paper);
+  text-decoration: underline;
+  text-shadow: 0 0 0 transparent;
+  transition: text-shadow 0.3s ease;
+}
+.tour-link:hover {
+  color: var(--accent);
+  text-shadow: 0.3px 0 0 #ddbf8a, -0.3px 0 0 #ddbf8a;
+}
 
 /* ==========================================================================
    Process steps
