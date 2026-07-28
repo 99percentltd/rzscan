@@ -155,8 +155,8 @@
               <circle cx="4" cy="26" r="1.5" fill="#c8a96e"/><circle cx="28" cy="26" r="1.5" fill="#c8a96e"/>
             </svg>
             <div class="svc-content">
-              <div class="svc-name">Residential<br><em>A&amp;A Scan </em><button type="button" class="reveal-toggle" data-group="svc-tech" data-target="svc-1" data-more="[+]" data-less="[&mdash;]">[+]</button></div>
-              <div class="svc-desc reveal-body" id="svc-1" data-group="svc-tech">Full interior and exterior capture of single dwellings. Ideal for extension, renovation, and heritage adaptation projects. Single storey through to complex two-storey homes.<br><span class="svc-tag">.RCP / .E57</span>
+              <div class="svc-name">Residential<br><em>A&amp;A Scan </em><button type="button" class="reveal-toggle" data-group="svc-service" data-target="svc-1" data-more="[+]" data-less="[&mdash;]">[+]</button></div>
+              <div class="svc-desc reveal-body" id="svc-1" data-group="svc-service">Full interior and exterior capture of single dwellings. Ideal for extension, renovation, and heritage adaptation projects. Single storey through to complex two-storey homes.<br><span class="svc-tag">.RCP / .E57</span>
               </div>
             </div>
           </div>
@@ -173,8 +173,8 @@
               <circle cx="4" cy="6" r="1.5" fill="#c8a96e"/><circle cx="20" cy="6" r="1.5" fill="#c8a96e"/>
             </svg>
             <div class="svc-content">
-              <div class="svc-name">Commercial<br><em>Fitout Scan </em><button type="button" class="reveal-toggle" data-group="svc-tech" data-target="svc-2" data-more="[+]" data-less="[&mdash;]">[+]</button></div>
-              <div class="svc-desc reveal-body" id="svc-2" data-group="svc-tech">Tenancy and floor-plate capture for commercial refurbishment and fitout projects. Delivered in formats compatible with Revit and ArchiCAD workflows.<br><span class="svc-tag">.RCP / .E57</span>
+              <div class="svc-name">Commercial<br><em>Fitout Scan </em><button type="button" class="reveal-toggle" data-group="svc-service" data-target="svc-2" data-more="[+]" data-less="[&mdash;]">[+]</button></div>
+              <div class="svc-desc reveal-body" id="svc-2" data-group="svc-service">Tenancy and floor-plate capture for commercial refurbishment and fitout projects. Delivered in formats compatible with Revit and ArchiCAD workflows.<br><span class="svc-tag">.RCP / .E57</span>
               </div>
             </div>
           </div>
@@ -191,8 +191,8 @@
               <circle cx="4" cy="26" r="1.5" fill="#c8a96e"/><circle cx="28" cy="26" r="1.5" fill="#c8a96e"/>
             </svg>
             <div class="svc-content">
-              <div class="svc-name">Heritage<br><em>Documentation </em><button type="button" class="reveal-toggle" data-group="svc-tech" data-target="svc-3" data-more="[+]" data-less="[&mdash;]">[+]</button></div>
-              <div class="svc-desc reveal-body" id="svc-3" data-group="svc-tech">Detailed facade and interior capture of heritage-listed and character buildings. Non-invasive, high-accuracy scanning of surfaces no tape measure can safely reach.<br><span class="svc-tag">.RCP / .E57 + 360°</span>
+              <div class="svc-name">Heritage<br><em>Documentation </em><button type="button" class="reveal-toggle" data-group="svc-service" data-target="svc-3" data-more="[+]" data-less="[&mdash;]">[+]</button></div>
+              <div class="svc-desc reveal-body" id="svc-3" data-group="svc-service">Detailed facade and interior capture of heritage-listed and character buildings. Non-invasive, high-accuracy scanning of surfaces no tape measure can safely reach.<br><span class="svc-tag">.RCP / .E57 + 360°</span>
               </div>
             </div>
           </div>
@@ -382,6 +382,19 @@
 
   </div>
 
+  <!-- ================= Kuula tour modal ================= -->
+  <div class="tour-modal" id="tour-modal" aria-hidden="true">
+    <div class="tour-modal-panel" role="dialog" aria-modal="true" aria-label="Virtual tour">
+      <div class="tour-modal-bar">
+        <span class="tour-modal-label">Interactive virtual tour</span>
+        <button type="button" class="tour-modal-close" id="tour-modal-close" aria-label="Close tour">&times;</button>
+      </div>
+      <div class="tour-modal-frame-wrap">
+        <iframe id="tour-modal-iframe" src="" title="Kuula virtual tour" allow="xr-spatial-tracking; gyroscope; accelerometer" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+  
   <script src="js/main.js"></script>
 </body>
 </html>
