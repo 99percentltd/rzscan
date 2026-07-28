@@ -80,6 +80,42 @@ document.querySelectorAll('.reveal-toggle').forEach(function (btn) {
   });
 });
 
+/* ── Kuula tour modal ── */
+/* Guarded like the notice bar above: pages without the modal markup
+   just skip this block instead of throwing. */
+const tourModal = document.getElementById('tour-modal');
+const tourModalIframe = document.getElementById('tour-modal-iframe');
+const tourModalClose = document.getElementById('tour-modal-close');
+if (tourModal && tourModalIframe && tourModalClose) {
+  function openTourModal(url) {
+    tourModalIframe.src = url;
+    tourModal.classList.add('open');
+    tourModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeTourModal() {
+    tourModal.classList.remove('open');
+    tourModal.setAttribute('aria-hidden', 'true');
+    tourModalIframe.src = ''; // stop the tour running once closed
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.tour-link').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      openTourModal(link.getAttribute('href'));
+    });
+  });
+
+  tourModalClose.addEventListener('click', closeTourModal);
+  tourModal.addEventListener('click', function (e) {
+    if (e.target === tourModal) closeTourModal();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && tourModal.classList.contains('open')) closeTourModal();
+  });
+}
+
 /* ── Enquiry form submission (Formspree) ── */
 const form = document.querySelector('.enquiry-form');
 const status = document.getElementById('ef-status');
