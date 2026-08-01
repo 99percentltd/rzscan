@@ -26,14 +26,14 @@ body {
   --ink: #0f0f0e;
   --ink-2: #3a3a38;
   --ink-3: #7a7a77;
-  --ink-4: #ebeae6;
   --paper: #f5f4f0;
   --paper-2: #7a7a77;
   --accent: #c8a96e;
   --navy: #1a3a5c;
   --accent-navy: #223a5b;
   --rule: rgba(15, 15, 14, 0.1);
-  --rule-2: #ebeae6;
+  --rule-2: rgba(255, 255, 255, 0.30);
+  --ink-4: rgba(255, 255, 255, 0.70);
   --fd: 'Cormorant Garamond', serif;
   --fm: 'DM Mono', monospace;
   --mw: 1200px;
@@ -419,6 +419,22 @@ nav {
 .step-desc { font-family: var(--fm); font-size: 13px; color: var(--ink-3); line-height: 1.8; }
 .step-arr { position: absolute; right: -9px; top: 40px; color: var(--accent); font-size: 14px; z-index: 2; }
 
+/* Dark-mode override: Process now sits on --accent-navy (moved below About,
+   background set inline on #process in the HTML). Overrides the light-mode
+   colors above with the dark-section equivalents used elsewhere on the page
+   (.hero-title, .svc-*), so text and dividers keep correct contrast on the
+   new dark background. :not(:last-child) preserves the base rule's "no
+   border after the final card" behavior, which this override would
+   otherwise defeat by ID-selector specificity. No text-stroke override on
+   .step-n: --rule-2 is a light hairline, meant to barely register against
+   the old light background — on dark navy the same stroke shows as a
+   visible outline, so it's dropped rather than recoloured. */
+#process .sec-title { color: var(--paper); }
+#process .proc-header { border-bottom: 0.5px solid var(--rule-2); }
+#process .proc-step:not(:last-child) { border-right: 0.5px solid var(--rule-2); }
+#process .step-title { color: var(--paper); }
+#process .step-desc { color: var(--ink-4); }
+
 /* ==========================================================================
    About
    ========================================================================== */
@@ -446,6 +462,15 @@ nav {
   background: var(--accent);
   flex-shrink: 0;
 }
+/* Light-mode variant: About now sits on --paper (moved above Process).
+   Overrides the dark-mode colors above with the light-section equivalents
+   used elsewhere on the page (.sec-body, .prob-card), so text and dividers
+   keep correct contrast on the new white background. */
+.about-wrap--light { background: var(--paper); border-bottom: 0.5px solid var(--rule); }
+.about-wrap--light .about { color: var(--ink-2); }
+.about-wrap--light .about-body { color: var(--ink-2); }
+.about-wrap--light .about-l { border-right-color: var(--rule); }
+.about-wrap--light .cred-list li { border-bottom-color: var(--rule); }
 
 /* ==========================================================================
    CTA
@@ -630,13 +655,16 @@ footer {
 .reveal-toggle[data-target="svc-2"]   { animation-delay: -2.8s; animation-name: toggle-pulse-dark; }
 .reveal-toggle[data-target="svc-3"]   { animation-delay: -4.7s; animation-name: toggle-pulse-dark; }
 .reveal-toggle[data-target="tech-1"]  { animation-delay: -1.4s; animation-name: toggle-pulse-dark; }
-.reveal-toggle[data-target="step-1"]  { animation-delay: -0.1s; }
-.reveal-toggle[data-target="step-2"]  { animation-delay: -1.9s; }
-.reveal-toggle[data-target="step-3"]  { animation-delay: -3.2s; }
-.reveal-toggle[data-target="step-4"]  { animation-delay: -3.6s; }
-/* about-1/2 sit on the dark --accent-navy background (.about-wrap). */
-.reveal-toggle[data-target="about-1"] { animation-delay: -0.6s; animation-name: toggle-pulse-dark; }
-.reveal-toggle[data-target="about-2"] { animation-delay: -2.1s; animation-name: toggle-pulse-dark; }
+/* step-1/2/3/4 now sit on the dark --accent-navy background (#process,
+   moved below About and recoloured dark) — use the dark-fade variant. */
+.reveal-toggle[data-target="step-1"]  { animation-delay: -0.1s; animation-name: toggle-pulse-dark; }
+.reveal-toggle[data-target="step-2"]  { animation-delay: -1.9s; animation-name: toggle-pulse-dark; }
+.reveal-toggle[data-target="step-3"]  { animation-delay: -3.2s; animation-name: toggle-pulse-dark; }
+.reveal-toggle[data-target="step-4"]  { animation-delay: -3.6s; animation-name: toggle-pulse-dark; }
+/* about-1/2 now sit on the light --paper background (.about-wrap--light,
+   moved above Process) — use the default light-fade variant. */
+.reveal-toggle[data-target="about-1"] { animation-delay: -0.6s; }
+.reveal-toggle[data-target="about-2"] { animation-delay: -2.1s; }
 
 /* ==========================================================================
    Misc
@@ -698,10 +726,13 @@ footer {
   .proc-step:nth-child(odd) { border-right: 0.5px solid var(--rule); }
   .proc-step:last-child { border-bottom: none; }
   .step-arr { display: none; }
+  #process .proc-step:not(:last-child) { border-bottom-color: var(--rule-2); }
+  #process .proc-step:nth-child(odd) { border-right-color: var(--rule-2); }
 
   .about { grid-template-columns: 1fr; }
   .about-l { padding: 48px 24px; border-right: none; border-bottom: 0.5px solid var(--rule-2); }
   .about-r { padding: 48px 24px; }
+  .about-wrap--light .about-l { border-bottom-color: var(--rule); }
 
   .cta { padding: 64px 24px; }
   .cta-title { font-size: 34px; }
